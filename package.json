@@ -1,0 +1,19 @@
+{
+  "name": "james-sewter-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio ",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JamesSewter/James-Sewter-Portfolio.git"
+  },
+  "author": "James Sewter",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JamesSewter/James-Sewter-Portfolio/issues"
+  },
+  "homepage": "https://github.com/JamesSewter/James-Sewter-Portfolio#readme"
+}
