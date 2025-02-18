@@ -125,10 +125,8 @@ app.component('home', {
             <p>  &#x1F680 || &#127947{{ introThree }} &#127947 || &#x1F680</p>
           </div>
 
-
-          <div class="skills">
-            <h2>Skills</h2>
-            
+          <h2>Skills</h2>
+            <div class="skills">
               <div class="logo-container">
                 <div v-for="tool in techLogos" :key="tool.name" class="logo-item" >
                   <img :src="tool.logo" :alt="tool.name">
@@ -136,11 +134,11 @@ app.component('home', {
               </div>
 
               <div class=skills-container>
-                <ul>
-                  <li v-for="(value, area) in skills" :key="area">
-                    {{ capitaliseFirstLetter(area) }}: 
+                <ul v-for="(value, area) in skills" :key="area">
+                  <li >
+                    <strong>{{ capitaliseFirstLetter(area) }}:</strong> 
                     <div class="skills-carousel">
-                      <p class="skill">{{ currentSkills[area] }}</p>
+                      <p class="skill">{{"&nbsp;" + currentSkills[area] }}</p>
                     </div>
                   </li>
                 </ul>
