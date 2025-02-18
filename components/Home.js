@@ -79,6 +79,12 @@ app.component('home', {
 
       introThree:
         'Developing my programming skills via personal projects - find out more below!',
+
+      projects: {
+        decisions: {title: "Decisions", summary: "summary", screenshot1: "screenshot", screenshot2: "screenshot2", github: "github", link: "link", video: "video"},
+        news: {title: "The News", summary: "summary", screenshot1: "screenshot", screenshot2: "screenshot2", github: "github", link: "link", video: null},
+        meoteorites: {title: "Find your meteorite", summary: "summary", screenshot1: "screenshot", screenshot2: "screenshot2", github: "github", link: "link", video: null}
+      },
       linkedIn: 'https://www.linkedin.com/in/james-sewter/',
       gitHub: 'https://github.com/JamesSewter',
     };
@@ -144,14 +150,11 @@ app.component('home', {
                 </ul>
               </div>
           </div>
-          
-          /* add project info */
-          <div class="projects">
+
+          <div class="projects" v-for="(project) in projects" :key="project">
             <h2> Projects </h2>
             <h3> Decisions </h3>
             <h3> News Website </h3>
-            <h3> Bladeless Wind Turbines! </h3>
-            <h3> Simple Strength  </h3>
             <h3> Meteorites  </h3>
           </div>
 
