@@ -4,7 +4,7 @@ body {
   font-family: tahoma;
   color: #282828;
   width: 100%;
-  display: flex;
+  display: block;
   justify-content: center; /* Centers horizontally */
   align-items: center; /* Centers vertically */
   text-align: center; /* Ensures text is centered */
@@ -54,13 +54,20 @@ img {
   box-shadow: 2px 15px -12px rgba(0, 0, 0, 0.57);
 }
 
+.skills {
+  display: -moz-inline-stack;
+  gap: 20px;
+}
+
 .logo-container {
   display: flex;
-  gap: 20px;
+  gap: 15px;
+  margin: 10px;
   overflow-x: auto;
   white-space: nowrap;
-  max-width: 500px; /* Adjust width */
-  padding: 15px;
+  height: 15%;
+  width: 100%;
+  padding: 10px;
   background: white;
   border-radius: 12px; /* Rounded corners */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
@@ -91,7 +98,20 @@ img {
   transform: scale(1.5); /* Smooth hover effect */
 }
 
+.skills-container {
+  display: flex;
+  margin: 10px;
+  height: 15%;
+  width: 100%;
+  padding: 15px;
+  background: white;
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  justify-content: center;
+}
+
 .skills-carousel {
+  display: inline;
   width: 100%;
   height: 50px;
   overflow: hidden;
@@ -99,8 +119,7 @@ img {
 }
 
 .skill {
-  display: inline-block;
-  font-size: 24px;
+  display: inline-table;
   transition: transform 0.5s ease-in-out;
   white-space: nowrap;
 }
