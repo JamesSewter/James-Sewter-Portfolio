@@ -71,9 +71,14 @@ app.component('home', {
           logo: 'https://itsolution24x7.com/blog/wp-content/uploads/2020/06/socketio.png',
         },
       ],
-      intro:
+      introOne:
         /* edit this */
-        'I am a General Engineering MEng graduate from the University of Sheffield, with a strong enthusiasm for problem-solving and using engineering principles. Driven by curiosity and a desire to understand how writing logic can play a powerful role in addressing today’s challenges, I chose to further develop my skills through Northcoders’ JavaScript bootcamp. Look through my projects below!',
+        'MEng  General Engineering graduate from the University of Sheffield.',
+      introTwo:
+        'Strong enthusiasm for problem-solving, using engineering principles, and building useful tools.',
+
+      introThree:
+        'Developing my programming skills via personal projects - find out more below!',
       linkedIn: 'https://www.linkedin.com/in/james-sewter/',
       gitHub: 'https://github.com/JamesSewter',
     };
@@ -109,36 +114,61 @@ app.component('home', {
   template:
     /*html*/
     `<div class="home">
-        <div class="basic-info">
-          <h1>{{ name }}</h1>
-
-          <h2>Skills</h2>
-          <div class="logo-container">
-          <div v-for="tool in techLogos" :key="tool.name" class="logo-item" >
-          <img :src="tool.logo" :alt="tool.name">
+          <nav class="nav-bar">
+            <h1 id="name">{{ name }}</h1>
+          </nav>
+          
+          <div class="intro">
+            <h2> Who am I? </h2>
+            <p>&#x1F393 {{ introOne }} &#x1F393</p>
+            <p>&#x2699 {{ introTwo }} &#x2699</p>
+            <p>  &#x1F680 || &#127947{{ introThree }} &#127947 || &#x1F680</p>
           </div>
+
+
+          <div class="skills">
+            <h2>Skills</h2>
+              <div class="logo-container">
+                <div v-for="tool in techLogos" :key="tool.name" class="logo-item" >
+                  <img :src="tool.logo" :alt="tool.name">
+                </div>
+              </div>
+
+              <div class=skills-container>
+                <ul>
+                  <li v-for="(value, area) in skills" :key="area">
+                    {{ capitaliseFirstLetter(area) }}: 
+                    <div class="skills-carousel">
+                      <p class="skill">{{ currentSkills[area] }}</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
           </div>
           
-          <ul>
-          <li v-for="(value, area) in skills" :key="area">
-            {{ capitaliseFirstLetter(area) }}: <div class="skills-carousel">
-            <p class="skill">{{ currentSkills[area] }}</p>
-            </div>
-          </li>
-          </ul>
+          /* add project info */
+          <div class="projects">
+            <h2> Projects </h2>
+            <h3> Decisions </h3>
+            <h3> News Website </h3>
+            <h3> Bladeless Wind Turbines! </h3>
+            <h3> Simple Strength  </h3>
+            <h3> Meteorites  </h3>
+          </div>
 
-          <h2> Who am I? </h2>
-          <p>{{ intro }}</p>
-          <h2> Projects </h2>
-          <h3> Decisions </h3>
-          <h3> News Website </h3>
-          <h3> Bladeless Wind Turbines! </h3>
-          <h3> Simple Strength  </h3>
-          <h3> Meteorites  </h3>
+        <div class="contact">
+          <h2>Find out more</h2>
+            <ul> 
+              <li>
+                <a :href="linkedIn" target="_blank">LinkedIn</a>
+              </li>
+              <li>
+                <a :href="gitHub" target="_blank">GitHub</a>
+              </li>
+            </ul>
+        </div>
 
-          <h2>Explore more:</h2>
-          <ul> <li><a :href="linkedIn" target="_blank">LinkedIn</a> </li>
-          <li> <a :href="gitHub" target="_blank">GitHub</a> </li></ul>
+        <div class="button-to-game">
           <button 
             class="button">
             Click me
