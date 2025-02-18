@@ -128,6 +128,7 @@ app.component('home', {
 
           <div class="skills">
             <h2>Skills</h2>
+            
               <div class="logo-container">
                 <div v-for="tool in techLogos" :key="tool.name" class="logo-item" >
                   <img :src="tool.logo" :alt="tool.name">
