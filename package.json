@@ -2,7 +2,7 @@
   "name": "james-sewter-portfolio",
   "version": "1.0.0",
   "description": "Portfolio ",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "test": "test"
   },
@@ -15,5 +15,7 @@
   "bugs": {
     "url": "https://github.com/JamesSewter/James-Sewter-Portfolio/issues"
   },
-  "homepage": "https://github.com/JamesSewter/James-Sewter-Portfolio#readme"
+  "homepage": "https://github.com/JamesSewter/James-Sewter-Portfolio#readme",
+  "dependencies": {
+  }
 }
