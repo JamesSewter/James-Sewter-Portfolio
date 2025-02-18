@@ -17,6 +17,7 @@ app.component('home', {
         other: ['Socket.io', 'Expo', 'Render', 'Netlify', 'Supabase'],
       },
       skillIndices: {},
+      currentIndex: 0,
       techLogos: [
         {
           name: 'JavaScript',
@@ -90,6 +91,11 @@ app.component('home', {
     capitaliseFirstLetter(str) {
       return str.charAt(0).toUpperCase() + str.slice(1);
     },
+    startAutoSlide() {
+      setInterval(() => {
+        this.currentIndex = (this.currentIndex + 1) % this.techLogos.length;
+      }, 2000); // Changes the slide every 2 seconds
+    },
   },
   computed: {
     currentSkills() {
@@ -105,20 +111,30 @@ app.component('home', {
       this.skillIndices[area] = 0;
     });
     this.startRotatingSkills();
+    this.startAutoSlide();
   },
   template:
     /*html*/
-    `<div class="home">
+    ` <div class="nav-bar">
+        <h1>{{ name }}</h1>
+    </div>
+    <div class="home">
+    
         <div class="basic-info">
-          <h1>{{ name }}</h1>
-
-          <h2>Skills</h2>
-          <div class="logo-container">
-          <div v-for="tool in techLogos" :key="tool.name" class="logo-item" >
-          <img :src="tool.logo" :alt="tool.name">
-          </div>
-          </div>
           
+
+          <h2> Who am I? </h2>
+          <p>{{ intro }}</p>
+          <h2>Skills</h2>
+          
+          <div class="carousel-container">
+            <div class="carousel-track" :style="trackStyle">
+              <div v-for="(logo, index) in techLogos" :key="index"    class="logo-item">
+                <img :src="logo.logo" :alt="logo.name" />
+              </div>
+            </div>
+          </div>
+
           <ul>
           <li v-for="(value, area) in skills" :key="area">
             {{ capitaliseFirstLetter(area) }}: <div class="skills-carousel">
@@ -127,8 +143,7 @@ app.component('home', {
           </li>
           </ul>
 
-          <h2> Who am I? </h2>
-          <p>{{ intro }}</p>
+          
           <h2> Projects </h2>
           <h3> Decisions </h3>
           <h3> News Website </h3>
@@ -146,3 +161,11 @@ app.component('home', {
         </div>
     </div>`,
 });
+
+
+
+{/* <div class="logo-container">
+<div v-for="tool in techLogos" :key="tool.name" class="logo-item" >
+<img :src="tool.logo" :alt="tool.name">
+</div>
+</div> */}
