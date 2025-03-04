@@ -95,7 +95,7 @@ app.component('home', {
         news: {
           title: 'The News',
           summary:
-            ' Designed and deployed a mobile-first front-end for a news website, prioritizing user experience with smooth navigation using React Router and state management with useState. Integrated API functionality to dynamically fetch and display articles, topics, and user interactions, incorporating error handling and loading states for better user feedback. Developed a robust RESTful API to enable CRUD operations on the content, ensuring reliability through TDD and Supertest. Focused on accessibility and clarity in design, deploying the site on Netlify for public access, providing an intuitive platform for users to stay informed.',
+            ' Designed and deployed a mobile-first front-end for a news website, prioritising user experience with smooth navigation using React Router and state management with useState. Integrated API functionality to dynamically fetch and display articles, topics, and user interactions, incorporating error handling and loading states for better user feedback. Developed a robust RESTful API to enable CRUD operations on the content, ensuring reliability through TDD and Supertest. Focused on accessibility and clarity in design, deploying the site on Netlify for public access, providing an intuitive platform for users to stay informed.',
           screenshot1: '../assets/images/nc-news-home.png',
           screenshot2: '../assets/images/nc-news-votes-comments.png',
           currentScreenshot: "../assets/images/nc-news-home.png",
@@ -208,13 +208,13 @@ app.component('home', {
             </div>
           </div>
           <div class="links">
-            <p>
+            <ul>
               <li><a :href="project.github" target="_blank">GitHub Repo</a></li>
               <li><a :href="project.link" target="_blank">Hosted Project</a></li>
               <li v-if="project.video">
               <a :href="project.video" target="_blank">Video Demo</a>
               </li>
-            </p>
+            </ul>
           </div>
         </div>
 

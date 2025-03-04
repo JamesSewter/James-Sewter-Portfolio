@@ -156,17 +156,6 @@ img {
   align-items: center
 }
 
-/* #project-summary {
-  width: 60%;
-  display: flexbox;
-  flex-direction: column;
-}
-
-.bullet-point {
-  display: block;
-  width: 100%;
-  gap: 120%
-} */
 
 #project-summary {
   width: 60%;
@@ -182,13 +171,13 @@ img {
   list-style: none; /* Removes default bullets */
   margin-bottom: 12px; /* Spacing between bullet points */
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.75;
 }
 
 /* Custom bullet icon */
 .bullet-point::before {
   content: "✔"; /* Unicode for a checkmark (✓), change to any symbol */
-  font-size: 18px;
+  font-size:20px;
   color: #007bff; /* Change to any color */
   font-weight: bold;
   margin-right: 10px;
@@ -215,29 +204,38 @@ img {
 #toggle-button:hover {
   background-color: #0056b3;
 }
+
 .links {
   display: flex;
   flex-direction: row;
   margin-top: 15px;
   text-align: center; /* Center the links */
 }
-/*  */
-ul {
+
+.links {
+  display: flex;
+  justify-content: center; /* Center the links */
+  margin-top: 15px;
+}
+
+.links ul {
+  display: flex; /* Makes the list items align in a row */
   list-style-type: none;
   padding-left: 0;
-  text-align: center; /* Center the list items */
+  gap: 20px; /* Adds spacing between links */
 }
 
-li {
-  margin-bottom: 8px;
+.links li {
+  margin: 0;
 }
 
-li a {
+.links a {
   text-decoration: none;
   color: #007bff;
+  font-weight: bold;
 }
 
-li a:hover {
+.links a:hover {
   text-decoration: underline;
 }
 
