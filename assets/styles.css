@@ -186,7 +186,7 @@ img {
 .screenshot {
   width: 90%;
   max-width: 300px; /* Adjust as needed */
-  height: auto;
+  height: 100%;
   border: 1%;
   margin: 40px;
   padding: 15px;

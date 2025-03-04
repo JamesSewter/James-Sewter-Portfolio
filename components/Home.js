@@ -86,7 +86,7 @@ app.component('home', {
             'Designed and developed a real-time decision-making app that enables users to vote on choices like dinner or movie selections before passing the turn to the next participant. Integrated Socket.io for live interactions, ensuring seamless real-time voting. Built a RESTful API with Koa.js and Mongoose, documenting endpoints in Gitbook. Focused on delivering a user-friendly, multiplatform solution (web, Android, iOS) while ensuring high code quality with Jest testing. Worked in an Agile environment, utilising SCRUM, Kanban boards, RATS/spiking, and best practices in version control and team collaboration.',
           screenshot1: '../assets/images/decisions-home.png',
           screenshot2: '../assets/images/decisions-decison.png',
-          currentScreenshot: "../assets/images/decisions-decison.png",
+          currentScreenshot: '../assets/images/decisions-decison.png',
           github: 'https://github.com/JamesSewter/decisions-api',
           link: 'https://decisions--88bemym06h.expo.app/',
           video:
@@ -97,8 +97,8 @@ app.component('home', {
           summary:
             ' Designed and deployed a mobile-first front-end for a news website, prioritising user experience with smooth navigation using React Router and state management with useState. Integrated API functionality to dynamically fetch and display articles, topics, and user interactions, incorporating error handling and loading states for better user feedback. Developed a robust RESTful API to enable CRUD operations on the content, ensuring reliability through TDD and Supertest. Focused on accessibility and clarity in design, deploying the site on Netlify for public access, providing an intuitive platform for users to stay informed.',
           screenshot1: '../assets/images/nc-news-home.png',
-          screenshot2: '../assets/images/nc-news-votes-comments.png',
-          currentScreenshot: "../assets/images/nc-news-home.png",
+          screenshot2: '../assets/images/nc-news-votes.png',
+          currentScreenshot: '../assets/images/nc-news-home.png',
           github: 'https://github.com/JamesSewter/nc-news',
           link: 'https://nc-news-js.netlify.app/',
           video: null,
@@ -109,7 +109,7 @@ app.component('home', {
             'Developed a React-based web application that fetches and visualises meteorite landing data from a NASA API. Users can search by year to explore meteorite impact details, including name, mass, coordinates, and an interactive Leaflet.js map for location insights. Implemented a local Node.js backend with caching (Node-Cache) to reduce redundant API calls, optimising performance by storing search results for a week. Utilised Express.js for server-side handling and React state management for dynamic updates, ensuring a smooth user experience.',
           screenshot1: '../assets/images/nasa-search.png',
           screenshot2: '../assets/images/nasa-example.png',
-          currentScreenshot: "../assets/images/nasa-example.png",
+          currentScreenshot: '../assets/images/nasa-example.png',
           github: 'https://github.com/JamesSewter/fe-react-data-visualisation',
           link: 'https://findmeteorites.netlify.app/',
           video: '../assets/videos/nasa-demo.webm',
@@ -132,15 +132,16 @@ app.component('home', {
       return str.charAt(0).toUpperCase() + str.slice(1);
     },
     toggleScreenshot(project) {
-      project.currentScreenshot = (project.currentScreenshot === project.screenshot1) 
-        ? project.screenshot2 
-        : project.screenshot1;
+      project.currentScreenshot =
+        project.currentScreenshot === project.screenshot1
+          ? project.screenshot2
+          : project.screenshot1;
     },
     stringToBulletPoints(summary) {
-      const regex = /(?<=\.)\s+(?=[A-Z])/g; 
-      let sentences = summary.split(regex)
-    return sentences.map(s => s.trim());
-    }
+      const regex = /(?<=\.)\s+(?=[A-Z])/g;
+      let sentences = summary.split(regex);
+      return sentences.map((s) => s.trim());
+    },
   },
   computed: {
     currentSkills() {
