@@ -11,7 +11,7 @@ app.component('home', {
       skills: {
         languages: ['JavaScript', 'Python'],
         database: ['MongoDB', 'SQL', 'PSQL'],
-        'back-end': ['Koa.js', 'Node.js', 'Express.js'],
+        'back-end': ['Node.js', 'Koa.js', 'Express.js'],
         'front-end': ['React Native', 'React', 'CSS', 'HTML', 'Wave', 'Vue.js'],
         testing: ['TDD', 'Supertest', 'Jest'],
         other: ['Socket.io', 'Expo', 'Render', 'Netlify', 'Supabase'],
@@ -39,16 +39,16 @@ app.component('home', {
           logo: 'https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg',
         },
         {
-          name: 'Koa.js',
-          logo: 'https://images.seeklogo.com/logo-png/36/1/koa-logo-png_seeklogo-362249.png',
-        },
-        {
           name: 'Node.js',
           logo: 'https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg',
         },
         {
           name: 'Express.js',
           logo: 'https://images.seeklogo.com/logo-png/33/1/express-js-logo-png_seeklogo-339850.png',
+        },
+        {
+          name: 'Koa.js',
+          logo: 'https://images.seeklogo.com/logo-png/36/1/koa-logo-png_seeklogo-362249.png',
         },
         {
           name: 'React',
@@ -72,18 +72,48 @@ app.component('home', {
         },
       ],
       introOne:
-        /* edit this */
         'MEng  General Engineering graduate from the University of Sheffield.',
       introTwo:
         'Strong enthusiasm for problem-solving, using engineering principles, and building useful tools.',
 
       introThree:
-        'Developing my programming skills via personal projects - find out more below!',
+        'Developing my programming skills via personal projects - find out more below! INTERESTS IN...',
 
       projects: {
-        decisions: {title: "Decisions", summary: "summary", screenshot1: "screenshot", screenshot2: "screenshot2", github: "github", link: "link", video: "video"},
-        news: {title: "The News", summary: "summary", screenshot1: "screenshot", screenshot2: "screenshot2", github: "github", link: "link", video: null},
-        meoteorites: {title: "Find your meteorite", summary: "summary", screenshot1: "screenshot", screenshot2: "screenshot2", github: "github", link: "link", video: null}
+        decisions: {
+          title: 'Decisions',
+          summary:
+            'Designed and developed a real-time decision-making app that enables users to vote on choices like dinner or movie selections before passing the turn to the next participant. Integrated Socket.io for live interactions, ensuring seamless real-time voting. Built a RESTful API with Koa.js and Mongoose, documenting endpoints in Gitbook. Focused on delivering a user-friendly, multiplatform solution (web, Android, iOS) while ensuring high code quality with Jest testing. Worked in an Agile environment, utilising SCRUM, Kanban boards, RATS/spiking, and best practices in version control and team collaboration.',
+          screenshot1: '../assets/images/decisions-home.png',
+          screenshot2: '../assets/images/decisions-decison.png',
+          currentScreenshot: "../assets/images/decisions-decison.png",
+          github: 'https://github.com/JamesSewter/decisions-api',
+          link: 'https://decisions--88bemym06h.expo.app/',
+          video:
+            'https://www.youtube.com/watch?v=PdEE0mDj6Qo&ab_channel=AlexIzumi',
+        },
+        news: {
+          title: 'The News',
+          summary:
+            ' Designed and deployed a mobile-first front-end for a news website, prioritizing user experience with smooth navigation using React Router and state management with useState. Integrated API functionality to dynamically fetch and display articles, topics, and user interactions, incorporating error handling and loading states for better user feedback. Developed a robust RESTful API to enable CRUD operations on the content, ensuring reliability through TDD and Supertest. Focused on accessibility and clarity in design, deploying the site on Netlify for public access, providing an intuitive platform for users to stay informed.',
+          screenshot1: '../assets/images/nc-news-home.png',
+          screenshot2: '../assets/images/nc-news-votes-comments.png',
+          currentScreenshot: "../assets/images/nc-news-home.png",
+          github: 'https://github.com/JamesSewter/nc-news',
+          link: 'https://nc-news-js.netlify.app/',
+          video: null,
+        },
+        meoteorites: {
+          title: 'Find your meteorite',
+          summary:
+            'Developed a React-based web application that fetches and visualises meteorite landing data from a NASA API. Users can search by year to explore meteorite impact details, including name, mass, coordinates, and an interactive Leaflet.js map for location insights. Implemented a local Node.js backend with caching (Node-Cache) to reduce redundant API calls, optimising performance by storing search results for a week. Utilised Express.js for server-side handling and React state management for dynamic updates, ensuring a smooth user experience.',
+          screenshot1: '../assets/images/nasa-search.png',
+          screenshot2: '../assets/images/nasa-example.png',
+          currentScreenshot: "../assets/images/nasa-example.png",
+          github: 'https://github.com/JamesSewter/fe-react-data-visualisation',
+          link: 'https://findmeteorites.netlify.app/',
+          video: '../assets/videos/nasa-demo.webm',
+        },
       },
       linkedIn: 'https://www.linkedin.com/in/james-sewter/',
       gitHub: 'https://github.com/JamesSewter',
@@ -101,6 +131,11 @@ app.component('home', {
     capitaliseFirstLetter(str) {
       return str.charAt(0).toUpperCase() + str.slice(1);
     },
+    toggleScreenshot(project) {
+      project.currentScreenshot = (project.currentScreenshot === project.screenshot1) 
+        ? project.screenshot2 
+        : project.screenshot1;
+    }
   },
   computed: {
     currentSkills() {
@@ -128,7 +163,7 @@ app.component('home', {
             <h2> Who am I? </h2>
             <p>&#x1F393 {{ introOne }} &#x1F393</p>
             <p>&#x2699 {{ introTwo }} &#x2699</p>
-            <p>  &#x1F680 || &#127947{{ introThree }} &#127947 || &#x1F680</p>
+            <p> &#127947{{ introThree }} &#127947 </p>
           </div>
 
           <h2>Skills</h2>
@@ -151,12 +186,26 @@ app.component('home', {
               </div>
           </div>
 
-          <div class="projects" v-for="(project) in projects" :key="project">
-            <h2> Projects </h2>
-            <h3> Decisions </h3>
-            <h3> News Website </h3>
-            <h3> Meteorites  </h3>
+        <h2> Projects </h2>
+        <div class="project" v-for="(project) in projects"  :key="project">
+          <h3>{{ project.title }}</h3>
+          <div class="project-content">
+            <p>{{ project.summary }}</p>
+            <div class="screenshots">
+              <img :src="project.currentScreenshot"  alt="Screenshot" class="screenshot">
+               <button id="toggle-button" @click="toggleScreenshot(project)">&rarr;</button>
+            </div>
           </div>
+          <div class="links">
+            <p>
+              <li><a :href="project.github" target="_blank">GitHub Repo</a></li>
+              <li><a :href="project.link" target="_blank">Hosted Project</a></li>
+              <li v-if="project.video">
+              <a :href="project.video" target="_blank">Video Demo</a>
+              </li>
+            </p>
+          </div>
+        </div>
 
         <div class="contact">
           <h2>Find out more</h2>
