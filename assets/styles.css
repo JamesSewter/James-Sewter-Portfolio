@@ -126,9 +126,77 @@ img {
 
 /* edit */
 
-.projects {
-  color: red;
+.project {
+  display: flex;
+  flex-direction: column; /* Align content vertically */
+  align-items: center; /* Center title */
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
 }
+
+.project p {
+  margin-bottom: 15px;
+  text-align: left; /* Align summary text to the left */
+}
+
+.project-content {
+  display: flex;
+  flex-direction: row; /* Align summary and screenshot side by side */
+  gap: 20px; /* Space between summary and screenshot */
+  align-items: flex-start; /* Align elements to the start of the container */
+  width: 100%;
+}
+
+.screenshot {
+  width: 70%;
+  max-width: 250px; /* Adjust as needed */
+  height: auto;
+  border: 1%;
+  margin: 40px;
+  padding: 15px;
+}
+
+#toggle-button {
+  padding: 8px 12px;
+  background-color: #a1bad4;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+#toggle-button:hover {
+  background-color: #0056b3;
+}
+.links {
+  display: flex;
+  flex-direction: row;
+  margin-top: 15px;
+  text-align: center; /* Center the links */
+}
+/*  */
+ul {
+  list-style-type: none;
+  padding-left: 0;
+  text-align: center; /* Center the list items */
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+li a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+li a:hover {
+  text-decoration: underline;
+}
+
 
 .contact {
   color: red;
