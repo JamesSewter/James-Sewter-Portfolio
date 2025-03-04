@@ -83,7 +83,7 @@ app.component('home', {
         decisions: {
           title: 'Decisions',
           summary:
-            'Designed and developed a real-time decision-making app that enables users to vote on choices like dinner or movie selections before passing the turn to the next participant. Integrated Socket.io for live interactions, ensuring seamless real-time voting. Built a RESTful API with Koa.js and Mongoose, documenting endpoints in Gitbook. Focused on delivering a user-friendly, multiplatform solution (web, Android, iOS) while ensuring high code quality with Jest testing. Worked in an Agile environment, utilising SCRUM, Kanban boards, RATS/spiking, and best practices in version control and team collaboration.',
+            'Designed and developed a real-time decision-making app that enables users to vote on choices like dinner or film selections before passing the turn to the next participant. Integrated Socket.io for live interactions, ensuring seamless real-time voting. Built a RESTful API with Koa.js and Mongoose, documenting endpoints in Gitbook. Focused on delivering a user-friendly, multiplatform solution (web, Android, iOS) while ensuring high code quality with Jest testing. Worked in an Agile environment, utilising SCRUM, Kanban boards, RATS/spiking, and best practices in version control and team collaboration.',
           screenshot1: '../assets/images/decisions-home.png',
           screenshot2: '../assets/images/decisions-decison.png',
           currentScreenshot: '../assets/images/decisions-decison.png',
@@ -93,7 +93,7 @@ app.component('home', {
             'https://www.youtube.com/watch?v=PdEE0mDj6Qo&ab_channel=AlexIzumi',
         },
         news: {
-          title: 'The News',
+          title: 'NC News',
           summary:
             ' Designed and deployed a mobile-first front-end for a news website, prioritising user experience with smooth navigation using React Router and state management with useState. Integrated API functionality to dynamically fetch and display articles, topics, and user interactions, incorporating error handling and loading states for better user feedback. Developed a robust RESTful API to enable CRUD operations on the content, ensuring reliability through TDD and Supertest. Focused on accessibility and clarity in design, deploying the site on Netlify for public access, providing an intuitive platform for users to stay informed.',
           screenshot1: '../assets/images/nc-news-home.png',
@@ -104,7 +104,7 @@ app.component('home', {
           video: null,
         },
         meoteorites: {
-          title: 'Find your meteorite',
+          title: 'Find Meteorites',
           summary:
             'Developed a React-based web application that fetches and visualises meteorite landing data from a NASA API. Users can search by year to explore meteorite impact details, including name, mass, coordinates, and an interactive Leaflet.js map for location insights. Implemented a local Node.js backend with caching (Node-Cache) to reduce redundant API calls, optimising performance by storing search results for a week. Utilised Express.js for server-side handling and React state management for dynamic updates, ensuring a smooth user experience.',
           screenshot1: '../assets/images/nasa-search.png',
@@ -197,7 +197,7 @@ app.component('home', {
           <h3>{{ project.title }}</h3>
           <div class="project-content">
             <div class="project-summary-box">
-            <h4>Summary</h4>
+              <h4>Summary</h4>
               <ul id="project-summary">
                 <li v-for="(bullet, index) in stringToBulletPoints(project.summary)" :key="index" class="bullet-point">
               {{ bullet }}
@@ -205,11 +205,12 @@ app.component('home', {
               </ul>
             </div>
             
-            <div class="screenshots">
-            <h4>Previews</h4>
-              <img :src="project.currentScreenshot"  alt="Screenshot" class="screenshot">
-               <button id="toggle-button" @click="toggleScreenshot(project)">&rarr;</button>
-            </div>
+              <div class="screenshot-box">
+                <h4>Previews</h4>
+                <img :src="project.currentScreenshot"  alt="Screenshot" class="screenshot">
+                <button id="toggle-button" @click="toggleScreenshot(project)">&rarr;</button>
+              </div>
+            
           </div>
           
           <div class="links">

@@ -52,16 +52,6 @@ ul {
   place-items: center;
 }
 
-img {
-  border: 2px solid #d8d8d8;
-  width: 70%;
-  margin: 40px;
-  padding: 15px;
-  -webkit-box-shadow: 0px 2px 15px -12px rgba(0, 0, 0, 0.57);
-  -moz-box-shadow: 0px 2px 15px -12px rgba(0, 0, 0, 0.57);
-  box-shadow: 2px 15px -12px rgba(0, 0, 0, 0.57);
-}
-
 .skills {
   display: -moz-inline-stack;
   gap: 20px;
@@ -77,14 +67,14 @@ img {
   width: 100%;
   padding: 10px;
   background: white;
-  border-radius: 12px; /* Rounded corners */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  border-radius: 12px; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
   scrollbar-width: thin;
   scrollbar-color: #888 #f4f4f4;
 }
 
 .logo-container::-webkit-scrollbar {
-  height: 8px; /* Thin scrollbar */
+  height: 8px; 
 }
 
 .logo-container::-webkit-scrollbar-thumb {
@@ -100,6 +90,12 @@ img {
   width: 50px;
   height: 50px;
   transition: transform 0.3s ease-in-out;
+  border: 2px solid #d8d8d8;
+  margin: 40px;
+  padding: 15px;
+  -webkit-box-shadow: 0px 2px 15px -12px rgba(0, 0, 0, 0.57);
+  -moz-box-shadow: 0px 2px 15px -12px rgba(0, 0, 0, 0.57);
+  box-shadow: 2px 15px -12px rgba(0, 0, 0, 0.57);
 }
 
 .logo-item img:hover {
@@ -133,6 +129,7 @@ img {
 }
 
 .project {
+  width: 100%;
   display: flex;
   flex-direction: column; /* Align content vertically */
   align-items: center; /* Center title */
@@ -151,18 +148,20 @@ img {
 .project-content {
   display: flex;
   flex-direction: row; /* Align summary and screenshot side by side */
-  gap: 20px; /* Space between summary and screenshot */
-  align-items: flex-start; /* Align elements to the start of the container */
+  gap: 2.5%; /* Space between summary and screenshot */
+  align-items: center; /* Align elements to the start of the container */
   width: 100%;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center
 }
 
 .project-summary-box {
-  width: 60%;
+  width: 40%;
   background: #f9f9f9; /* Light background for contrast */
   border-left: 5px solid #007bff; /* Accent border on the left */
-  padding: 20px;
+  padding: 2%;
+  border: 2%;
+  margin: 2%;
   border-radius: 10px; /* Rounded corners */
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
@@ -185,7 +184,7 @@ img {
   line-height: 1.75;
 }
 
-/* Custom bullet icon */
+
 .bullet-point::before {
   content: "✔"; /* Unicode for a checkmark (✓), change to any symbol */
   font-size:20px;
@@ -194,13 +193,22 @@ img {
   margin-right: 10px;
 }
 
+.screenshot-box {
+  width: 50%;
+  max-width: 400px; /* Adjust as needed */
+  background: #f9f9f9; /* Light background for contrast */
+  border-left: 5px solid#83c0cf; /* Accent border on the left */
+  padding: 2%;
+  border: 2%;
+  margin: 2%;
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
 .screenshot {
-  width: 90%;
-  max-width: 300px; /* Adjust as needed */
-  height: 100%;
-  border: 1%;
-  margin: 40px;
-  padding: 15px;
+  width: 100%;
+  max-width: 500px; /* Adjust as needed */
+  align-items: center;
 }
 
 #toggle-button {
@@ -219,7 +227,7 @@ img {
 .links {
   display: flex;
   flex-direction: row;
-  margin-top: 15px;
+  margin-top: 5px;
   text-align: center; /* Center the links */
 }
 
