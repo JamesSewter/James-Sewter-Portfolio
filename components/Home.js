@@ -8,6 +8,7 @@ app.component('home', {
   data() {
     return {
       name: 'James Sewter',
+      profilePicture: '../assets/images/professional_picture.png',
       skills: {
         languages: ['JavaScript', 'Python'],
         database: ['MongoDB', 'SQL', 'PSQL'],
@@ -77,15 +78,21 @@ app.component('home', {
         'Strong enthusiasm for problem-solving, using engineering principles, and building useful tools.',
 
       introThree:
-        'Developing my programming skills via personal projects - find out more below! INTERESTS IN...',
-
+        'Developing my programming skills via personal projects - find out more below!',
+      introFour:
+        'Passionate about data visualisation, optimising server performance, and meeting user requirements.',
+      introFive:
+        'Away from coding you might find me on a countryside walk, at the gym, or playing snooker!',
       projects: {
         decisions: {
           title: 'Decisions',
           summary:
             'Designed and developed a real-time decision-making app that enables users to vote on choices like dinner or film selections before passing the turn to the next participant. Integrated Socket.io for live interactions, ensuring seamless real-time voting. Built a RESTful API with Koa.js and Mongoose, documenting endpoints in Gitbook. Focused on delivering a user-friendly, multiplatform solution (web, Android, iOS) while ensuring high code quality with Jest testing. Worked in an Agile environment, utilising SCRUM, Kanban boards, RATS/spiking, and best practices in version control and team collaboration.',
 
-          screenshots: ['../assets/images/decisions-home.png', '../assets/images/decisions-decison.png',], 
+          screenshots: [
+            '../assets/images/decisions-home.png',
+            '../assets/images/decisions-decison.png',
+          ],
           position: 0,
           github: 'https://github.com/JamesSewter/decisions-api',
           link: 'https://decisions--88bemym06h.expo.app/',
@@ -96,7 +103,10 @@ app.component('home', {
           title: 'NC News',
           summary:
             ' Designed and deployed a mobile-first front-end for a news website, prioritising user experience with smooth navigation using React Router and state management with useState. Integrated API functionality to dynamically fetch and display articles, topics, and user interactions, incorporating error handling and loading states for better user feedback. Developed a robust RESTful API to enable CRUD operations on the content, ensuring reliability through TDD and Supertest. Focused on accessibility and clarity in design, deploying the site on Netlify for public access, providing an intuitive platform for users to stay informed.',
-          screenshots: ['../assets/images/nc-news-home.png', '../assets/images/nc-news-votes.png',], 
+          screenshots: [
+            '../assets/images/nc-news-home.png',
+            '../assets/images/nc-news-votes.png',
+          ],
           position: 0,
           github: 'https://github.com/JamesSewter/nc-news',
           link: 'https://nc-news-js.netlify.app/',
@@ -106,7 +116,10 @@ app.component('home', {
           title: 'Find Meteorites',
           summary:
             'Developed a React-based web application that fetches and visualises meteorite landing data from a NASA API. Users can search by year to explore meteorite impact details, including name, mass, coordinates, and an interactive Leaflet.js map for location insights. Implemented a local Node.js backend with caching (Node-Cache) to reduce redundant API calls, optimising performance by storing search results for a week. Utilised Express.js for server-side handling and React state management for dynamic updates, ensuring a smooth user experience.',
-          screenshots: ['../assets/images/nasa-search.png', '../assets/images/nasa-example.png',], 
+          screenshots: [
+            '../assets/images/nasa-search.png',
+            '../assets/images/nasa-example.png',
+          ],
           position: 0,
           github: 'https://github.com/JamesSewter/fe-react-data-visualisation',
           link: 'https://findmeteorites.netlify.app/',
@@ -131,18 +144,16 @@ app.component('home', {
     },
     screenshotForwards(project) {
       if (project.position === project.screenshots.length - 1) {
-        project.position = 0
-      } 
-      else {
-        project.position++
+        project.position = 0;
+      } else {
+        project.position++;
       }
     },
     screenshotBackwards(project) {
       if (project.position === 0) {
-        project.position = project.screenshots.length - 1
-      } 
-      else {
-        project.position--
+        project.position = project.screenshots.length - 1;
+      } else {
+        project.position--;
       }
     },
     stringToBulletPoints(summary) {
@@ -169,43 +180,67 @@ app.component('home', {
   template:
     /*html*/
     `<div class="home">
-          <nav class="nav-bar">
-            <h1 id="name">{{ name }}</h1>
-          </nav>
-          
-          <div class="intro">
-            <h2> About</h2>
-            <p>&#x1F393 {{ introOne }} &#x1F393</p>
-            <p>&#x2699 {{ introTwo }} &#x2699</p>
-            <p> &#127947{{ introThree }} &#127947 </p>
+
+      <nav class="nav-bar">
+        <h1 id="name">{{ name }}</h1>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+
+          <li class="dropdown">
+            <a href="#">Projects ▾</a>
+            <ul class="dropdown-content">
+              <li v-for="(project) in projects" :key="project.title"><a :href="'#' + project.title">{{project.title}}</a></li>
+            </ul>
+          </li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+    <section id="about">
+      <h2>About</h2>
+        <div class="about-content">
+          <div id="intro-points">
+            <p class="intro-point">&#x1F393 &nbsp; {{ introOne }} &nbsp; &#x1F393</p>
+            <p class="intro-point">&#x2699 &nbsp; {{ introTwo }} &nbsp; &#x2699</p>
+            <p class="intro-point"> &#127947 &nbsp; {{ introThree }} &nbsp; &#127947 </p>
+            <p class="intro-point"> 👨🏻‍💻 &nbsp; {{ introFour }} &nbsp; 👨🏻‍💻 </p>
+            <p class="intro-point"> 🥾 &nbsp; {{ introFive }} &nbsp; 🥾 </p>
+          </div>
+          <img :src="profilePicture"  alt="Picture of James" id="profile-picture" >
+        </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+        <div class="skills">
+          <div class="logo-container">
+            <div v-for="tool in techLogos" :key="tool.name"   class="logo-item" >
+              <img :src="tool.logo" :alt="tool.name">
+            </div>
           </div>
 
-          <h2>Skills</h2>
-            <div class="skills">
-              <div class="logo-container">
-                <div v-for="tool in techLogos" :key="tool.name" class="logo-item" >
-                  <img :src="tool.logo" :alt="tool.name">
+          <div class=skills-container>
+            <ul v-for="(value, area) in skills" :key="area">
+              <li >
+                <strong>{{ capitaliseFirstLetter(area) }}:</strong> 
+                <div class="skills-carousel">
+                  <p class="skill">{{"&nbsp;" + currentSkills[area] }}</p>
                 </div>
-              </div>
-
-              <div class=skills-container>
-                <ul v-for="(value, area) in skills" :key="area">
-                  <li >
-                    <strong>{{ capitaliseFirstLetter(area) }}:</strong> 
-                    <div class="skills-carousel">
-                      <p class="skill">{{"&nbsp;" + currentSkills[area] }}</p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
+              </li>
+              </ul>
           </div>
+        </div>
+    <section>
 
+
+    <section id="projects">
         <h2> Projects </h2>
-        <div class="project" v-for="(project) in projects"  :key="project">
+        <div class="project" v-for="(project) in projects"  :key="project" :id="project.title">
           <h3>{{ project.title }}</h3>
           <div class="project-content">
             <div class="project-summary-box">
-              <h4>Summary</h4>
+              <h4>📖&nbsp;&nbsp;&nbsp;&nbsp;Summary&nbsp;&nbsp;&nbsp;&nbsp;📖</h4>
               <ul id="project-summary">
                 <li v-for="(bullet, index) in stringToBulletPoints(project.summary)" :key="index" class="bullet-point">
                 {{ bullet }}
@@ -224,16 +259,18 @@ app.component('home', {
 
             </div>
               <div class="screenshot-box">
-                <h4>Previews</h4>
+                <h4>🔎&nbsp;&nbsp;&nbsp;&nbsp;Preview&nbsp;&nbsp;&nbsp;&nbsp;🔎</h4>
                 <img :src="project.screenshots[project.position]"  alt="Screenshot" class="screenshot">
                 <button id="toggle-button" @click="screenshotBackwards(project)">&larr;</button>
                 <button id="toggle-button" @click="screenshotForwards(project)">&rarr;</button>
               </div>
           </div>
         </div>
+    </section>
 
+    <section id="contact">
         <div class="contact">
-          <h2>Find out more</h2>
+          <h2>Contact</h2>
             <ul> 
               <li>
                 <a :href="linkedIn" target="_blank">LinkedIn</a>
@@ -243,8 +280,9 @@ app.component('home', {
               </li>
             </ul>
         </div>
+    </section>
 
-        <div class="button-to-game">
+        <div class="button-to-fact">
           <button 
             class="button">
             Click me

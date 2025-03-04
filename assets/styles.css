@@ -20,6 +20,7 @@ h2 {
 
 h3 {
   font-size: 35px;
+  text-decoration: underline;
 }
 
 h4 {
@@ -38,29 +39,77 @@ ul {
   list-style-type: none;
 }
 
+/* make so it is screen width */
 .nav-bar {
   background: linear-gradient(-90deg, #83c0cf, #1544a8);
-  height: 60px;
-  width: 100%;
-  -webkit-box-shadow: 0px 2px 15px -12px rgba(0, 0, 0, 0.57);
-  -moz-box-shadow: 0px 2px 15px -12px rgba(0, 0, 0, 0.57);
+  padding-top: 60px;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.57);
+  position: relative;
+  width: 100%;
+  text-align: center;
+  padding-bottom: .5rem;
+  margin-bottom: 1.5rem;
 }
 
 #name {
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
 }
 
+.dropdown {
+  position: relative; /* Needed for positioning the dropdown content */
+}
+
+/* Style dropdown */
+.dropdown-content {
+  display: none; /* Hide by default */
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  padding: 10px;
+  list-style: none;
+}
+
+/* Show dropdown when hovering */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+.about-content {
+  display: flex;
+  align-content: center;
+  background: #c4dce4; /* Light background for contrast */
+  border-left: 5px solid #007bff; /* Accent border on the left */
+  padding:2rem; /* Improved spacing consistency */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+#intro-points {
+  padding: 1%
+}
+ .intro-point {
+  padding: 0.5rem
+} 
+
+#profile-picture {
+  width: 20%;
+  height: auto;
+  border-radius: 10px; 
+  object-fit: cover; 
+}
+
+/* edit this */
 .skills {
-  display: -moz-inline-stack;
   gap: 20px;
 }
 
 .logo-container {
   display: flex;
   gap: 15px;
-  margin: 10px;
   overflow-x: auto;
   white-space: nowrap;
   height: 15%;
@@ -99,12 +148,11 @@ ul {
 }
 
 .logo-item img:hover {
-  transform: scale(1.5); /* Smooth hover effect */
+  transform: scale(1.5); 
 }
 
 .skills-container {
   display: flex;
-  margin: 10px;
   height: 15%;
   width: 100%;
   padding: 15px;
@@ -136,7 +184,7 @@ ul {
   margin-bottom: 20px;
   padding: 15px;
   border: 1px solid #ccc;
-  border-radius: 8px;
+  border-radius: 10px;
   background-color: #f9f9f9;
 }
 
@@ -216,7 +264,8 @@ ul {
   margin: 5px;
   border: 2px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.5rem;
+  border-radius: 10px; /* Rounded corners */
 }
 
 #toggle-button:hover {
@@ -249,12 +298,12 @@ ul {
   text-decoration: underline;
 }
 
-
+/* 
 .contact {
-  color: red;
-}
+ 
+} */
 
-.button-to-game {
+.button-to-fact {
   font-size: 24px;
   transition: transform 0.5s ease-in-out;
   white-space: nowrap;
