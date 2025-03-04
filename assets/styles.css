@@ -148,19 +148,17 @@ ul {
 .project-content {
   display: flex;
   flex-direction: row; /* Align summary and screenshot side by side */
-  gap: 2.5%; /* Space between summary and screenshot */
+  gap: 20px; /* Space between summary and screenshot */
   align-items: center; /* Align elements to the start of the container */
   width: 100%;
   justify-content: space-evenly;
-  align-items: center
 }
 
 .project-summary-box {
   width: 40%;
   background: #f9f9f9; /* Light background for contrast */
   border-left: 5px solid #007bff; /* Accent border on the left */
-  padding: 2%;
-  border: 2%;
+  padding: 2rem; /* Improved spacing consistency */
   margin: 2%;
   border-radius: 10px; /* Rounded corners */
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
@@ -198,24 +196,25 @@ ul {
   max-width: 400px; /* Adjust as needed */
   background: #f9f9f9; /* Light background for contrast */
   border-left: 5px solid#83c0cf; /* Accent border on the left */
-  padding: 2%;
-  border: 2%;
+  padding: 2rem; /* Improved spacing consistency */
   margin: 2%;
   border-radius: 10px; /* Rounded corners */
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 .screenshot {
-  width: 100%;
-  max-width: 500px; /* Adjust as needed */
-  align-items: center;
+  width: auto; /* Prevents stretching */
+  max-width: 100%; /* Ensures it fits within the container */
+  display: block;
+  margin: 0 auto; /* Centers the image */
 }
 
 #toggle-button {
   padding: 8px 12px;
   background-color: #a1bad4;
   color: white;
-  border: none;
+  margin: 5px;
+  border: 2px;
   cursor: pointer;
   font-size: 1rem;
 }
@@ -226,20 +225,12 @@ ul {
 
 .links {
   display: flex;
-  flex-direction: row;
-  margin-top: 5px;
-  text-align: center; /* Center the links */
-}
-
-.links {
-  display: flex;
   justify-content: center; /* Center the links */
   margin-top: 15px;
 }
 
 .links ul {
   display: flex; /* Makes the list items align in a row */
-  list-style-type: none;
   padding-left: 0;
   gap: 20px; /* Adds spacing between links */
 }

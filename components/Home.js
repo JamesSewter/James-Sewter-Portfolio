@@ -166,7 +166,7 @@ app.component('home', {
           </nav>
           
           <div class="intro">
-            <h2> Who am I? </h2>
+            <h2> About</h2>
             <p>&#x1F393 {{ introOne }} &#x1F393</p>
             <p>&#x2699 {{ introTwo }} &#x2699</p>
             <p> &#127947{{ introThree }} &#127947 </p>
@@ -200,27 +200,26 @@ app.component('home', {
               <h4>Summary</h4>
               <ul id="project-summary">
                 <li v-for="(bullet, index) in stringToBulletPoints(project.summary)" :key="index" class="bullet-point">
-              {{ bullet }}
+                {{ bullet }}
+                </li>
+              </ul>
+
+              <div class="links">
+              <ul>
+                <li><a :href="project.github" target="_blank">GitHub Repo</a></li>
+                <li><a :href="project.link" target="_blank">Hosted Project</a></li>
+                <li v-if="project.video">
+                <a :href="project.video" target="_blank">Video Demo</a>
                 </li>
               </ul>
             </div>
-            
+
+            </div>
               <div class="screenshot-box">
                 <h4>Previews</h4>
                 <img :src="project.currentScreenshot"  alt="Screenshot" class="screenshot">
                 <button id="toggle-button" @click="toggleScreenshot(project)">&rarr;</button>
               </div>
-            
-          </div>
-          
-          <div class="links">
-            <ul>
-              <li><a :href="project.github" target="_blank">GitHub Repo</a></li>
-              <li><a :href="project.link" target="_blank">Hosted Project</a></li>
-              <li v-if="project.video">
-              <a :href="project.video" target="_blank">Video Demo</a>
-              </li>
-            </ul>
           </div>
         </div>
 
