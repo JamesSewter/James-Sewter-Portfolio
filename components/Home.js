@@ -135,6 +135,11 @@ app.component('home', {
       project.currentScreenshot = (project.currentScreenshot === project.screenshot1) 
         ? project.screenshot2 
         : project.screenshot1;
+    },
+    stringToBulletPoints(summary) {
+      const regex = /(?<=\.)\s+(?=[A-Z])/g; 
+      let sentences = summary.split(regex)
+    return sentences.map(s => s.trim());
     }
   },
   computed: {
@@ -190,8 +195,14 @@ app.component('home', {
         <div class="project" v-for="(project) in projects"  :key="project">
           <h3>{{ project.title }}</h3>
           <div class="project-content">
-            <p>{{ project.summary }}</p>
+            <ul id="project-summary">
+              <li v-for="(bullet, index) in stringToBulletPoints(project.summary)" :key="index" class="bullet-point">
+              {{ bullet }}
+              </li>
+            </ul>
+           
             <div class="screenshots">
+            <h3>Example</h3>
               <img :src="project.currentScreenshot"  alt="Screenshot" class="screenshot">
                <button id="toggle-button" @click="toggleScreenshot(project)">&rarr;</button>
             </div>

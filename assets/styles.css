@@ -14,8 +14,12 @@ h1 {
   font-size: 50px;
 }
 
+h2 {
+  font-size: 35px;
+}
+
 h3 {
-  font-size: 25px;
+  font-size: 30px;
 }
 
 p {
@@ -148,11 +152,51 @@ img {
   gap: 20px; /* Space between summary and screenshot */
   align-items: flex-start; /* Align elements to the start of the container */
   width: 100%;
+  justify-content: space-around;
+  align-items: center
+}
+
+/* #project-summary {
+  width: 60%;
+  display: flexbox;
+  flex-direction: column;
+}
+
+.bullet-point {
+  display: block;
+  width: 100%;
+  gap: 120%
+} */
+
+#project-summary {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 0; /* Removes default padding */
+}
+
+.bullet-point {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between icon and text */
+  list-style: none; /* Removes default bullets */
+  margin-bottom: 12px; /* Spacing between bullet points */
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Custom bullet icon */
+.bullet-point::before {
+  content: "✔"; /* Unicode for a checkmark (✓), change to any symbol */
+  font-size: 18px;
+  color: #007bff; /* Change to any color */
+  font-weight: bold;
+  margin-right: 10px;
 }
 
 .screenshot {
-  width: 70%;
-  max-width: 250px; /* Adjust as needed */
+  width: 90%;
+  max-width: 300px; /* Adjust as needed */
   height: auto;
   border: 1%;
   margin: 40px;
