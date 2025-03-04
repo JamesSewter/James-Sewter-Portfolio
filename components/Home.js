@@ -196,18 +196,22 @@ app.component('home', {
         <div class="project" v-for="(project) in projects"  :key="project">
           <h3>{{ project.title }}</h3>
           <div class="project-content">
-            <ul id="project-summary">
-              <li v-for="(bullet, index) in stringToBulletPoints(project.summary)" :key="index" class="bullet-point">
+            <div class="project-summary-box">
+            <h4>Summary</h4>
+              <ul id="project-summary">
+                <li v-for="(bullet, index) in stringToBulletPoints(project.summary)" :key="index" class="bullet-point">
               {{ bullet }}
-              </li>
-            </ul>
-           
+                </li>
+              </ul>
+            </div>
+            
             <div class="screenshots">
-            <h3>Example</h3>
+            <h4>Previews</h4>
               <img :src="project.currentScreenshot"  alt="Screenshot" class="screenshot">
                <button id="toggle-button" @click="toggleScreenshot(project)">&rarr;</button>
             </div>
           </div>
+          
           <div class="links">
             <ul>
               <li><a :href="project.github" target="_blank">GitHub Repo</a></li>
