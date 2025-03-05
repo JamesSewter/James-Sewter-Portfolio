@@ -87,6 +87,7 @@ app.component('home', {
       projects: {
         decisions: {
           title: 'Decisions',
+          emoji: "🤔",
           summary:
             'Designed and developed a real-time decision-making app that enables users to vote on choices like dinner or film selections before passing the turn to the next participant. Integrated Socket.io for live interactions, ensuring seamless real-time voting. Built a RESTful API with Koa.js and Mongoose, documenting endpoints in Gitbook. Focused on delivering a user-friendly, multiplatform solution (web, Android, iOS) while ensuring high code quality with Jest testing. Worked in an Agile environment, utilising SCRUM, Kanban boards, RATS/spiking, and best practices in version control and team collaboration.',
 
@@ -102,6 +103,7 @@ app.component('home', {
         },
         news: {
           title: 'NC News',
+          emoji: "🗞️",
           summary:
             ' Designed and deployed a mobile-first front-end for a news website, prioritising user experience with smooth navigation using React Router and state management with useState. Integrated API functionality to dynamically fetch and display articles, topics, and user interactions, incorporating error handling and loading states for better user feedback. Developed a robust RESTful API to enable CRUD operations on the content, ensuring reliability through TDD and Supertest. Focused on accessibility and clarity in design, deploying the site on Netlify for public access, providing an intuitive platform for users to stay informed.',
           screenshots: [
@@ -115,6 +117,7 @@ app.component('home', {
         },
         meoteorites: {
           title: 'Find Meteorites',
+          emoji: "☄️",
           summary:
             'Developed a React-based web application that fetches and visualises meteorite landing data from a NASA API. Users can search by year to explore meteorite impact details, including name, mass, coordinates, and an interactive Leaflet.js map for location insights. Implemented a local Node.js backend with caching (Node-Cache) to reduce redundant API calls, optimising performance by storing search results for a week. Utilised Express.js for server-side handling and React state management for dynamic updates, ensuring a smooth user experience.',
           screenshots: [
@@ -207,7 +210,9 @@ app.component('home', {
           <li class="dropdown" class="link">
             <a href="#" @click.prevent="toggleDropdown" ref="dropdownToggle">Projects ▾</a>
             <ul class="dropdown-content" v-if="isDropdownOpen" ref="dropdown">
-              <li class="project-link" v-for="(project) in projects" :key="project.title"><a :href="'#' + project.title">{{project.title}}</a></li>
+              <li class="project-link" v-for="(project) in projects" :key="project.title">
+              <span class="emoji">{{ project.emoji }}</span>
+              <a :href="'#' + project.title">{{project.title}}</a></li>
             </ul>
           </li>
           <li class="link"><a href="#contact">Contact</a></li>
