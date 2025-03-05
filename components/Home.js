@@ -7,6 +7,7 @@ app.component('home', {
   },
   data() {
     return {
+      isDropdownOpen: false,
       name: 'James Sewter',
       profilePicture: '../assets/images/professional_picture.png',
       skills: {
@@ -161,6 +162,18 @@ app.component('home', {
       let sentences = summary.split(regex);
       return sentences.map((s) => s.trim());
     },
+    toggleDropdown() {
+      this.isDropdownOpen = !this.isDropdownOpen;
+    },
+    closeDropdown(event) {
+      if (
+        this.$refs.dropdown &&
+        !this.$refs.dropdown.contains(event.target) &&
+        !this.$refs.dropdownToggle.contains(event.target)
+      ) {
+        this.isDropdownOpen = false;
+      }
+    },
   },
   computed: {
     currentSkills() {
@@ -176,6 +189,10 @@ app.component('home', {
       this.skillIndices[area] = 0;
     });
     this.startRotatingSkills();
+    document.addEventListener("click", this.closeDropdown);
+  },
+  beforeUnmount() {
+    document.removeEventListener("click", this.closeDropdown);
   },
   template:
     /*html*/
@@ -184,16 +201,16 @@ app.component('home', {
       <nav class="nav-bar">
         <h1 id="name">{{ name }}</h1>
         <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
+          <li class="link"><a href="#about">About</a></li>
+          <li class="link"><a href="#skills">Skills</a></li>
 
-          <li class="dropdown">
-            <a href="#">Projects ▾</a>
-            <ul class="dropdown-content">
-              <li v-for="(project) in projects" :key="project.title"><a :href="'#' + project.title">{{project.title}}</a></li>
+          <li class="dropdown" class="link">
+            <a href="#" @click.prevent="toggleDropdown" ref="dropdownToggle">Projects ▾</a>
+            <ul class="dropdown-content" v-if="isDropdownOpen" ref="dropdown">
+              <li class="project-link" v-for="(project) in projects" :key="project.title"><a :href="'#' + project.title">{{project.title}}</a></li>
             </ul>
           </li>
-          <li><a href="#contact">Contact</a></li>
+          <li class="link"><a href="#contact">Contact</a></li>
         </ul>
       </nav>
 
