@@ -8,6 +8,8 @@ app.component('home', {
   data() {
     return {
       isDropdownOpen: false,
+      isOverlayVisible: false,
+      factText: 'Loading fact...',
       name: 'James Sewter',
       profilePicture: '../assets/images/professional_picture.png',
       skills: {
@@ -179,6 +181,20 @@ app.component('home', {
         this.isDropdownOpen = false;
       }
     },
+    async fetchFact() {
+      try {
+        const response = await fetch("https://uselessfacts.jsph.pl/api/v2/facts/today");
+        const data = await response.json();
+        this.factText = data.text;
+        this.isOverlayVisible = true;
+      } catch (error) {
+        this.factText = "Failed to fetch fact.";
+        this.isOverlayVisible = true;
+      }
+    },
+    closeOverlay() {
+      this.isOverlayVisible = false;
+    },
   },
   computed: {
     currentSkills() {
@@ -255,7 +271,7 @@ app.component('home', {
               </ul>
           </div>
         </div>
-    <section>
+    </section>
 
 
     <section id="projects">
@@ -313,11 +329,15 @@ app.component('home', {
         </div>
     </section>
 
-        <div class="button-to-fact">
-          <button 
-            class="button">
-            Click me
-          </button>
-        </div>
+    <div class="button-to-fact">
+      <button class="button" @click="fetchFact">Fact of the day</button>
+    </div>
+
+  <div v-if="isOverlayVisible" class="fact-overlay">
+    <div class="fact-content">
+      <p>{{ factText }}</p>
+      <button @click="closeOverlay" class="close-overlay">Close</button>
+    </div>
+  </div>
     </div>`,
 });

@@ -382,6 +382,40 @@ ul {
   cursor: pointer;
 }
 
+.fact-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); 
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.fact-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 60%;
+  text-align: center;
+}
+
+button.close-overlay {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button.close-overlay:hover {
+  background-color: #0056b3;
+}
+
 /* mobile first*/
 
 @media (min-width: 600px) {
