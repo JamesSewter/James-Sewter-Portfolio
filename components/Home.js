@@ -132,6 +132,8 @@ app.component('home', {
       },
       linkedIn: 'https://www.linkedin.com/in/james-sewter/',
       gitHub: 'https://github.com/JamesSewter',
+      linkedInLogo: '../assets/images/linkedin-logo.png',
+      githubLogo: '../assets/images/github-logo.png',
     };
   },
   methods: {
@@ -291,14 +293,21 @@ app.component('home', {
     </section>
 
     <section id="contact">
+    <h2>Contact</h2>
         <div class="contact">
-          <h2>Contact</h2>
             <ul> 
               <li>
-                <a :href="linkedIn" target="_blank">LinkedIn</a>
+                <a :href="linkedIn" target="_blank">
+                  <img :src="linkedInLogo"  alt="LinkedIn Logo" class="contact-logo">
+                </a>
+                Find me on&nbsp<a :href="linkedIn" target="_blank">LinkedIn</a>
               </li>
+              <br>
               <li>
-                <a :href="gitHub" target="_blank">GitHub</a>
+                <a :href="gitHub" target="_blank">
+                  <img :src="githubLogo"  alt="GitHub Logo" class="contact-logo">
+                </a>
+                See more exciting projects on&nbsp<a :href="gitHub" target="_blank">GitHub</a>
               </li>
             </ul>
         </div>
