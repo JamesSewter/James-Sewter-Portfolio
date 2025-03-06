@@ -247,7 +247,7 @@ app.component('home', {
               <li class="project-link" v-for="(project) in projects" :key="project.title">
               <span class="emoji">{{ project.emoji }}</span>
               <a :href="'#' + project.title">{{project.title}}</a></li>
-              <button @click="closeDropdown" class="close-overlay">Close</button>
+              <button @click="closeDropdown" class="close-button">Close</button>
             </ul>
           </li>
           <li class="link"><a href="#contact">Contact</a></li>
@@ -294,7 +294,11 @@ app.component('home', {
     <section id="projects">
         <h2> Projects </h2>
         <div class="project" v-for="(project) in projects"  :key="project" :id="project.title">
-          <h3>{{ project.title }}</h3>
+        <div class="project-header">
+          <h3 id="project-emoji">{{project.emoji}}</h3>
+          <h3 id="project-title">{{ project.title }}</h3>
+          <h3 id="project-emoji">{{project.emoji}}</h3>
+        </div>
           <div class="project-content">
             <div class="project-summary-box">
               <h4>📖&nbsp;&nbsp;&nbsp;&nbsp;Summary&nbsp;&nbsp;&nbsp;&nbsp;📖</h4>
@@ -354,7 +358,7 @@ app.component('home', {
       <div class="fact-content" ref="factContent">
         <h2>Fact of the day</h2>
         <p>{{ factText }}</p>
-        <button @click="closeOverlay" class="close-overlay">Close</button>
+        <button @click="closeOverlay" class="close-button">Close</button>
       </div>
     </div>
     </div>`,
