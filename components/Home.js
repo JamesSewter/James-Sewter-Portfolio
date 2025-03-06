@@ -25,7 +25,7 @@ app.component('home', {
           },
           {
             name: 'SQL',
-            logo: 'https://upload.wikimedia.org/wikipedia/commons/8/87/Sql_data_base_with_logo.png',
+            logo: '../assets/images/sql-logo.png',
           },
           {
             name: 'PSQL',
