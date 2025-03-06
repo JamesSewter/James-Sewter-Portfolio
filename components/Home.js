@@ -187,14 +187,26 @@ app.component('home', {
         const data = await response.json();
         this.factText = data.text;
         this.isOverlayVisible = true;
+        document.addEventListener("click", this.closeOverlayOutside);
       } catch (error) {
-        this.factText = "Failed to fetch fact.";
+        this.factText = "Oh no fact fetching failed - please check your internet connection.";
         this.isOverlayVisible = true;
+        document.addEventListener("click", this.closeOverlayOutside);
       }
     },
     closeOverlay() {
       this.isOverlayVisible = false;
+      document.removeEventListener("click", this.closeOverlayOutside);
     },
+    closeOverlayOutside(event) {
+      if (
+        this.isOverlayVisible && 
+      this.$refs.factContent && 
+      !this.$refs.factContent.contains(event.target)
+      ) {
+        this.closeOverlay();
+      }
+    }
   },
   computed: {
     currentSkills() {
@@ -333,12 +345,12 @@ app.component('home', {
       <button class="button" @click="fetchFact">Fact of the day</button>
     </div>
 
-  <div v-if="isOverlayVisible" class="fact-overlay">
-    <div class="fact-content">
-    <h2>Fact of the day</h2>
-      <p>{{ factText }}</p>
-      <button @click="closeOverlay" class="close-overlay">Close</button>
+    <div v-if="isOverlayVisible" class="fact-overlay" >
+      <div class="fact-content" ref="factContent">
+        <h2>Fact of the day</h2>
+        <p>{{ factText }}</p>
+        <button @click="closeOverlay" class="close-overlay">Close</button>
+      </div>
     </div>
-  </div>
     </div>`,
 });
