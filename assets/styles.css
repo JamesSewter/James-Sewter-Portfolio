@@ -423,6 +423,10 @@ button.close-button:hover {
   text-align: center;
 }
 
+#api-reference {
+  font-size: 15px
+}
+
 /* mobile first*/
 
 @media (min-width: 600px) {

@@ -1,10 +1,6 @@
 app.component('home', {
   data() {
     return {
-      flippedTools: {},
-      isDropdownOpen: false,
-      isOverlayVisible: false,
-      factText: 'Loading fact...',
       name: 'James Sewter',
       profilePicture: '../assets/images/professional_picture.png',
       skills: {
@@ -166,8 +162,13 @@ app.component('home', {
       },
       linkedIn: 'https://www.linkedin.com/in/james-sewter/',
       gitHub: 'https://github.com/JamesSewter',
+      api: "https://uselessfacts.jsph.pl/",
       linkedInLogo: '../assets/images/linkedin-logo.png',
       githubLogo: '../assets/images/github-logo.png',
+      flippedTools: {},
+      isDropdownOpen: false,
+      isOverlayVisible: false,
+      factText: 'Loading fact...',
     };
   },
   methods: {
@@ -391,6 +392,9 @@ app.component('home', {
         <h2>Fact of the day</h2>
         <p>{{ factText }}</p>
         <button @click="closeOverlay" class="close-button">Close</button>
+
+        <p id="api-reference">Daily facts provided by&nbsp<a :href="api" target="_blank">Joseph Paul</a>
+        </p>
       </div>
     </div>
     </div>`,
