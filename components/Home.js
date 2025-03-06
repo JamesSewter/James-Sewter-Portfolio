@@ -71,7 +71,6 @@ app.component('home', {
           },
           {
             name: 'Wave',
-            logo: null,
           },
           {
             name: 'Vue.js',
@@ -113,7 +112,7 @@ app.component('home', {
           },
         ],
       },
-     
+
       introOne:
         'MEng  General Engineering graduate from the University of Sheffield.',
       introTwo:
@@ -245,12 +244,16 @@ app.component('home', {
         this.closeOverlay();
       }
     },
-    flipTool(toolName) {
-      this.flippedTools[toolName] = !this.flippedTools[toolName];
+    flipTool(tool) {
+      if (tool.logo) {
+        this.flippedTools[tool.name] = !this.flippedTools[tool.name];
+      }
     },
-    flipToolHover(toolName) {
-      this.flippedTools[toolName] = !this.flippedTools[toolName];
-  },
+    flipToolHover(tool) {
+      if (tool.logo) {
+        this.flippedTools[tool.name] = !this.flippedTools[tool.name];
+      }
+    },
   },
   computed: {},
   mounted() {
@@ -309,13 +312,13 @@ app.component('home', {
               <li v-for="(value, area) in skills" :key="area">
                 <strong id="area-title">{{ capitaliseFirstLetter(area) }}:</strong> 
 
-                  <div v-for="(tool) in value" class="tool-container" @mouseenter="flipToolHover(tool.name, true)" 
-                  @mouseleave="flipToolHover(tool.name, false)" 
+                  <div v-for="(tool) in value" class="tool-container" @mouseenter="flipToolHover(tool, true)" 
+                  @mouseleave="flipToolHover(tool, false)" 
                   @click="flipTool(tool.name)"> 
 
                     <p v-if="!flippedTools[tool.name]" class="tool-title">{{tool.name}}</p>
 
-                    <div v-if="flippedTools[tool.name]" class="logo-item"> 
+                    <div v-if="flippedTools[tool.name] && tool.logo" class="logo-item"> 
                       <img :src="tool.logo">
                     </div> 
 

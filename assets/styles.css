@@ -162,7 +162,6 @@ button.close-button:hover {
   border-top: 5px solid#0056b3;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-
 }
 
 .skill-list {
@@ -176,8 +175,8 @@ button.close-button:hover {
 }
 
 .tool-container {
-  flex: 1 1 calc(25% - 10px); /* Each tool takes up 25% of the row minus gap */
-  max-width: calc(25% - 10px); 
+  flex: 1 1 calc(25% - 10px);
+  max-width: calc(25% - 10px);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -199,7 +198,6 @@ button.close-button:hover {
   font-size: 30px;
 }
 
-
 .logo-item img {
   width: 40px;
   height: 40px;
@@ -211,8 +209,6 @@ button.close-button:hover {
   -moz-box-shadow: 0px 2px 15px -12px rgba(0, 0, 0, 0.57);
   box-shadow: 2px 15px -12px rgba(0, 0, 0, 0.57);
 }
-
-
 
 /* end of skills */
 
