@@ -335,6 +335,7 @@ app.component('home', {
 
   <div v-if="isOverlayVisible" class="fact-overlay">
     <div class="fact-content">
+    <h2>Fact of the day</h2>
       <p>{{ factText }}</p>
       <button @click="closeOverlay" class="close-overlay">Close</button>
     </div>
