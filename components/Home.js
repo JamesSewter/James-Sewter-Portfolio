@@ -1,10 +1,4 @@
 app.component('home', {
-  props: {
-    premium: {
-      type: Boolean,
-      required: true,
-    },
-  },
   data() {
     return {
       flippedTools: {},
@@ -257,9 +251,6 @@ app.component('home', {
   },
   computed: {},
   mounted() {
-    Object.keys(this.skills).forEach((area) => {
-      this.skillIndices[area] = 0;
-    });
     document.addEventListener('click', this.closeDropdownOutside);
   },
   beforeUnmount() {
@@ -275,7 +266,7 @@ app.component('home', {
           <li class="link"><a href="#about">About</a></li>
           <li class="link"><a href="#skills">Skills</a></li>
 
-          <li class="dropdown" class="link">
+          <li id="dropdown" class="link">
             <a href="#" @click.prevent="toggleDropdown" ref="dropdownToggle">Projects ▾</a>
             <ul class="dropdown-content" v-if="isDropdownOpen" ref="dropdown">
               <li class="project-link" v-for="(project) in projects" :key="project.title">
@@ -309,12 +300,12 @@ app.component('home', {
     
             <ul class="skill-list">
 
-              <li v-for="(value, area) in skills" :key="area">
+              <li v-for="(value, area) in skills" :key="area" class="area-row">
                 <strong id="area-title">{{ capitaliseFirstLetter(area) }}:</strong> 
 
                   <div v-for="(tool) in value" class="tool-container" @mouseenter="flipToolHover(tool, true)" 
                   @mouseleave="flipToolHover(tool, false)" 
-                  @click="flipTool(tool.name)"> 
+                  @click="flipTool(tool)"> 
 
                     <p v-if="!flippedTools[tool.name]" class="tool-title">{{tool.name}}</p>
 
