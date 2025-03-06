@@ -172,7 +172,11 @@ app.component('home', {
     toggleDropdown() {
       this.isDropdownOpen = !this.isDropdownOpen;
     },
-    closeDropdown(event) {
+    closeDropdown() {
+      this.isDropdownOpen = false;
+      document.removeEventListener("click", this.closeDropdown);
+    },
+    closeDropdownOutside(event) {
       if (
         this.$refs.dropdown &&
         !this.$refs.dropdown.contains(event.target) &&
@@ -222,10 +226,10 @@ app.component('home', {
       this.skillIndices[area] = 0;
     });
     this.startRotatingSkills();
-    document.addEventListener("click", this.closeDropdown);
+    document.addEventListener("click", this.closeDropdownOutside);
   },
   beforeUnmount() {
-    document.removeEventListener("click", this.closeDropdown);
+    document.removeEventListener("click", this.closeDropdownOutside);
   },
   template:
     /*html*/
@@ -243,6 +247,7 @@ app.component('home', {
               <li class="project-link" v-for="(project) in projects" :key="project.title">
               <span class="emoji">{{ project.emoji }}</span>
               <a :href="'#' + project.title">{{project.title}}</a></li>
+              <button @click="closeDropdown" class="close-overlay">Close</button>
             </ul>
           </li>
           <li class="link"><a href="#contact">Contact</a></li>
