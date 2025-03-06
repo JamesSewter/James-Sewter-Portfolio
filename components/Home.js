@@ -7,74 +7,113 @@ app.component('home', {
   },
   data() {
     return {
+      flippedTools: {},
       isDropdownOpen: false,
       isOverlayVisible: false,
       factText: 'Loading fact...',
       name: 'James Sewter',
       profilePicture: '../assets/images/professional_picture.png',
       skills: {
-        languages: ['JavaScript', 'Python'],
-        database: ['MongoDB', 'SQL', 'PSQL'],
-        'back-end': ['Node.js', 'Koa.js', 'Express.js'],
-        'front-end': ['React Native', 'React', 'CSS', 'HTML', 'Wave', 'Vue.js'],
-        testing: ['TDD', 'Supertest', 'Jest'],
-        other: ['Socket.io', 'Expo', 'Render', 'Netlify', 'Supabase'],
+        languages: [
+          {
+            name: 'JavaScript',
+            logo: 'https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png',
+          },
+          {
+            name: 'Python',
+            logo: 'https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg',
+          },
+        ],
+        database: [
+          {
+            name: 'MongoDB',
+            logo: 'https://cdn.iconscout.com/icon/free/png-256/free-mongodb-logo-icon-download-in-svg-png-gif-file-formats--wordmark-programming-langugae-freebies-pack-logos-icons-1175140.png?f=webp',
+          },
+          {
+            name: 'SQL',
+            logo: 'https://upload.wikimedia.org/wikipedia/commons/8/87/Sql_data_base_with_logo.png',
+          },
+          {
+            name: 'PSQL',
+            logo: 'https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg',
+          },
+        ],
+        'back-end': [
+          {
+            name: 'Node.js',
+            logo: 'https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg',
+          },
+          {
+            name: 'Express.js',
+            logo: 'https://images.seeklogo.com/logo-png/33/1/express-js-logo-png_seeklogo-339850.png',
+          },
+          {
+            name: 'Koa.js',
+            logo: 'https://images.seeklogo.com/logo-png/36/1/koa-logo-png_seeklogo-362249.png',
+          },
+        ],
+        'front-end': [
+          {
+            name: 'React Native',
+            logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg',
+          },
+          {
+            name: 'React',
+            logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg',
+          },
+          {
+            name: 'CSS',
+            logo: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg',
+          },
+          {
+            name: 'HTML',
+            logo: 'https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg',
+          },
+          {
+            name: 'Wave',
+            logo: null,
+          },
+          {
+            name: 'Vue.js',
+            logo: 'https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg',
+          },
+        ],
+        misc: [
+          {
+            name: 'Socket.io',
+            logo: 'https://itsolution24x7.com/blog/wp-content/uploads/2020/06/socketio.png',
+          },
+          {
+            name: 'Expo',
+            logo: null,
+          },
+          {
+            name: 'Render',
+            logo: null,
+          },
+          {
+            name: 'Netlify',
+            logo: null,
+          },
+          {
+            name: 'Supabase',
+            logo: null,
+          },
+          {
+            name: 'TDD',
+            logo: null,
+          },
+          {
+            name: 'Supertest',
+            logo: null,
+          },
+          {
+            name: 'Jest',
+            logo: null,
+          },
+        ],
       },
-      skillIndices: {},
-      techLogos: [
-        {
-          name: 'JavaScript',
-          logo: 'https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png',
-        },
-        {
-          name: 'Python',
-          logo: 'https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg',
-        },
-        {
-          name: 'MongoDB',
-          logo: 'https://cdn.iconscout.com/icon/free/png-256/free-mongodb-logo-icon-download-in-svg-png-gif-file-formats--wordmark-programming-langugae-freebies-pack-logos-icons-1175140.png?f=webp',
-        },
-        {
-          name: 'SQL',
-          logo: 'https://upload.wikimedia.org/wikipedia/commons/8/87/Sql_data_base_with_logo.png',
-        },
-        {
-          name: 'PSQL',
-          logo: 'https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg',
-        },
-        {
-          name: 'Node.js',
-          logo: 'https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg',
-        },
-        {
-          name: 'Express.js',
-          logo: 'https://images.seeklogo.com/logo-png/33/1/express-js-logo-png_seeklogo-339850.png',
-        },
-        {
-          name: 'Koa.js',
-          logo: 'https://images.seeklogo.com/logo-png/36/1/koa-logo-png_seeklogo-362249.png',
-        },
-        {
-          name: 'React',
-          logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg',
-        },
-        {
-          name: 'CSS',
-          logo: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg',
-        },
-        {
-          name: 'HTML',
-          logo: 'https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg',
-        },
-        {
-          name: 'Vue.js',
-          logo: 'https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg',
-        },
-        {
-          name: 'Socket.io',
-          logo: 'https://itsolution24x7.com/blog/wp-content/uploads/2020/06/socketio.png',
-        },
-      ],
+     
       introOne:
         'MEng  General Engineering graduate from the University of Sheffield.',
       introTwo:
@@ -89,7 +128,7 @@ app.component('home', {
       projects: {
         decisions: {
           title: 'Decisions',
-          emoji: "🤔",
+          emoji: '🤔',
           summary:
             'Designed and developed a real-time decision-making app that enables users to vote on choices like dinner or film selections before passing the turn to the next participant. Integrated Socket.io for live interactions, ensuring seamless real-time voting. Built a RESTful API with Koa.js and Mongoose, documenting endpoints in Gitbook. Focused on delivering a user-friendly, multiplatform solution (web, Android, iOS) while ensuring high code quality with Jest testing. Worked in an Agile environment, utilising SCRUM, Kanban boards, RATS/spiking, and best practices in version control and team collaboration.',
 
@@ -105,7 +144,7 @@ app.component('home', {
         },
         news: {
           title: 'NC News',
-          emoji: "🗞️",
+          emoji: '🗞️',
           summary:
             ' Designed and deployed a mobile-first front-end for a news website, prioritising user experience with smooth navigation using React Router and state management with useState. Integrated API functionality to dynamically fetch and display articles, topics, and user interactions, incorporating error handling and loading states for better user feedback. Developed a robust RESTful API to enable CRUD operations on the content, ensuring reliability through TDD and Supertest. Focused on accessibility and clarity in design, deploying the site on Netlify for public access, providing an intuitive platform for users to stay informed.',
           screenshots: [
@@ -119,7 +158,7 @@ app.component('home', {
         },
         meoteorites: {
           title: 'Find Meteorites',
-          emoji: "☄️",
+          emoji: '☄️',
           summary:
             'Developed a React-based web application that fetches and visualises meteorite landing data from a NASA API. Users can search by year to explore meteorite impact details, including name, mass, coordinates, and an interactive Leaflet.js map for location insights. Implemented a local Node.js backend with caching (Node-Cache) to reduce redundant API calls, optimising performance by storing search results for a week. Utilised Express.js for server-side handling and React state management for dynamic updates, ensuring a smooth user experience.',
           screenshots: [
@@ -139,14 +178,6 @@ app.component('home', {
     };
   },
   methods: {
-    startRotatingSkills() {
-      setInterval(() => {
-        Object.keys(this.skills).forEach((area) => {
-          this.skillIndices[area] =
-            (this.skillIndices[area] + 1) % this.skills[area].length;
-        });
-      }, 2000);
-    },
     capitaliseFirstLetter(str) {
       return str.charAt(0).toUpperCase() + str.slice(1);
     },
@@ -174,7 +205,7 @@ app.component('home', {
     },
     closeDropdown() {
       this.isDropdownOpen = false;
-      document.removeEventListener("click", this.closeDropdown);
+      document.removeEventListener('click', this.closeDropdown);
     },
     closeDropdownOutside(event) {
       if (
@@ -187,49 +218,49 @@ app.component('home', {
     },
     async fetchFact() {
       try {
-        const response = await fetch("https://uselessfacts.jsph.pl/api/v2/facts/today");
+        const response = await fetch(
+          'https://uselessfacts.jsph.pl/api/v2/facts/today'
+        );
         const data = await response.json();
         this.factText = data.text;
         this.isOverlayVisible = true;
-        document.addEventListener("click", this.closeOverlayOutside);
+        document.addEventListener('click', this.closeOverlayOutside);
       } catch (error) {
-        this.factText = "Oh no fact fetching failed - please check your internet connection.";
+        this.factText =
+          'Oh no fact fetching failed - please check your internet connection.';
         this.isOverlayVisible = true;
-        document.addEventListener("click", this.closeOverlayOutside);
+        document.addEventListener('click', this.closeOverlayOutside);
       }
     },
     closeOverlay() {
       this.isOverlayVisible = false;
-      document.removeEventListener("click", this.closeOverlayOutside);
+      document.removeEventListener('click', this.closeOverlayOutside);
     },
     closeOverlayOutside(event) {
       if (
-        this.isOverlayVisible && 
-      this.$refs.factContent && 
-      !this.$refs.factContent.contains(event.target)
+        this.isOverlayVisible &&
+        this.$refs.factContent &&
+        !this.$refs.factContent.contains(event.target)
       ) {
         this.closeOverlay();
       }
-    }
-  },
-  computed: {
-    currentSkills() {
-      let rotatingSkills = {};
-      Object.keys(this.skills).forEach((area) => {
-        rotatingSkills[area] = this.skills[area][this.skillIndices[area]] || '';
-      });
-      return rotatingSkills;
     },
+    flipTool(toolName) {
+      this.flippedTools[toolName] = !this.flippedTools[toolName];
+    },
+    flipToolHover(toolName) {
+      this.flippedTools[toolName] = !this.flippedTools[toolName];
   },
+  },
+  computed: {},
   mounted() {
     Object.keys(this.skills).forEach((area) => {
       this.skillIndices[area] = 0;
     });
-    this.startRotatingSkills();
-    document.addEventListener("click", this.closeDropdownOutside);
+    document.addEventListener('click', this.closeDropdownOutside);
   },
   beforeUnmount() {
-    document.removeEventListener("click", this.closeDropdownOutside);
+    document.removeEventListener('click', this.closeDropdownOutside);
   },
   template:
     /*html*/
@@ -270,23 +301,30 @@ app.component('home', {
 
     <section id="skills">
       <h2>Skills</h2>
-        <div class="skills">
-          <div class="logo-container">
-            <div v-for="tool in techLogos" :key="tool.name"   class="logo-item" >
-              <img :src="tool.logo" :alt="tool.name">
-            </div>
-          </div>
 
-          <div class=skills-container>
-            <ul v-for="(value, area) in skills" :key="area">
-              <li >
-                <strong>{{ capitaliseFirstLetter(area) }}:</strong> 
-                <div class="skills-carousel">
-                  <p class="skill">{{"&nbsp;" + currentSkills[area] }}</p>
-                </div>
+        <div class="skills-container">
+    
+            <ul class="skill-list">
+
+              <li v-for="(value, area) in skills" :key="area">
+                <strong id="area-title">{{ capitaliseFirstLetter(area) }}:</strong> 
+
+                  <div v-for="(tool) in value" class="tool-container" @mouseenter="flipToolHover(tool.name, true)" 
+                  @mouseleave="flipToolHover(tool.name, false)" 
+                  @click="flipTool(tool.name)"> 
+
+                    <p v-if="!flippedTools[tool.name]" class="tool-title">{{tool.name}}</p>
+
+                    <div v-if="flippedTools[tool.name]" class="logo-item"> 
+                      <img :src="tool.logo">
+                    </div> 
+
+                  </div> 
+
               </li>
-              </ul>
-          </div>
+            </ul>
+
+            
         </div>
     </section>
 
