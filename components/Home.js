@@ -259,16 +259,14 @@ app.component('home', {
   },
   template:
     /*html*/
-    `<div class="home">
-
+    `
+    <section id="nav">
       <nav class="nav-bar">
         <h1 id="name">{{ name }}</h1>
         <ul class="nav-links">
           <li class="link"><a href="#about">About</a></li>
           <li class="link"><a href="#skills">Skills</a></li>
-
-          <li id="dropdown" class="link">
-            <a href="#" @click.prevent="toggleDropdown" ref="dropdownToggle">Projects ▾</a>
+          <li id="dropdown" class="link"><a href="#" @click.prevent="toggleDropdown" ref="dropdownToggle">Projects ▾</a>
             <ul class="dropdown-content" v-if="isDropdownOpen" ref="dropdown">
               <li class="project-link" v-for="(project) in projects" :key="project.title">
               <span class="emoji">{{ project.emoji }}</span>
@@ -279,16 +277,17 @@ app.component('home', {
           <li class="link"><a href="#contact">Contact</a></li>
         </ul>
       </nav>
+    <section>
 
     <section id="about">
       <h2>About</h2>
-        <div class="about-content">
+        <div class="about-container">
           <div id="intro-points">
-            <p class="intro-point">&#x1F393 &nbsp; {{ introOne }} &nbsp; &#x1F393</p>
-            <p class="intro-point">&#x2699 &nbsp; {{ introTwo }} &nbsp; &#x2699</p>
-            <p class="intro-point"> &#127947 &nbsp; {{ introThree }} &nbsp; &#127947 </p>
-            <p class="intro-point"> 👨🏻‍💻 &nbsp; {{ introFour }} &nbsp; 👨🏻‍💻 </p>
-            <p class="intro-point"> 🥾 &nbsp; {{ introFive }} &nbsp; 🥾 </p>
+            <p class="intro-point">&#x1F393 &nbsp; {{ introOne }} </p>
+            <p class="intro-point">&#x2699 &nbsp; {{ introTwo }} &nbsp; </p>
+            <p class="intro-point"> &#127947 &nbsp; {{ introThree }}  </p>
+            <p class="intro-point"> 👨🏻‍💻 &nbsp; {{ introFour }} </p>
+            <p class="intro-point"> 🥾 &nbsp; {{ introFive }} </p>
           </div>
           <img :src="profilePicture"  alt="Picture of James" id="profile-picture" >
         </div>
@@ -298,29 +297,20 @@ app.component('home', {
       <h2>Skills</h2>
 
         <div class="skills-container">
-    
             <ul class="skill-list">
-
               <li v-for="(value, area) in skills" :key="area" class="area-row">
                 <strong id="area-title">{{ capitaliseFirstLetter(area) }}:</strong> 
-
                   <div v-for="(tool) in value" class="tool-container" 
                   @mouseenter="flipToolHover(tool, true)" 
                   @mouseleave="flipToolHover(tool, false)" 
                   @click="flipTool(tool)"> 
-
                     <p v-if="!flippedTools[tool.name]" class="tool-title">{{tool.name}}</p>
-
                     <div v-if="flippedTools[tool.name] && tool.logo" class="logo-item"> 
                       <img :src="tool.logo">
                     </div> 
-
                   </div> 
-    
               </li>
             </ul>
-
-            
         </div>
     </section>
 
@@ -328,56 +318,50 @@ app.component('home', {
     <section id="projects">
         <h2> Projects </h2>
         <div class="project-container" v-for="(project) in projects"  :key="project" :id="project.title">
-        <div class="project-header">
+          <div class="project-header">
           <h3 id="project-emoji">{{project.emoji}}</h3>
           <h3 id="project-title">{{ project.title }}</h3>
           <h3 id="project-emoji">{{project.emoji}}</h3>
-        </div>
-          <div class="project-content">
-            <div class="project-summary-box">
-              <h4>📖&nbsp;&nbsp;&nbsp;&nbsp;Summary&nbsp;&nbsp;&nbsp;&nbsp;📖</h4>
-              <ul id="project-summary">
-                <li v-for="(bullet, index) in stringToBulletPoints(project.summary)" :key="index" class="bullet-point">
-                {{ bullet }}
-                </li>
-              </ul>
-
+          </div>
+            <div class="project-content">
+              <div class="project-summary-box">
+                <h4>📖&nbsp;&nbsp;&nbsp;&nbsp;Summary&nbsp;&nbsp;&nbsp;&nbsp;📖</h4>
+                <ul id="project-summary">
+                  <li v-for="(bullet, index) in stringToBulletPoints(project.summary)" :key="index" class="bullet-point">
+                    {{ bullet }}
+                  </li>
+                </ul>
+              
               <div class="links">
-              <ul>
-                <li><a :href="project.github" target="_blank">GitHub Repo</a></li>
-                <li><a :href="project.link" target="_blank">Hosted Project</a></li>
-                <li v-if="project.video">
-                <a :href="project.video" target="_blank">Video Demo</a>
-                </li>
-              </ul>
+                <ul>
+                  <li><a :href="project.github" target="_blank">GitHub Repo</a></li>
+                  <li><a :href="project.link" target="_blank">Hosted Project</a></li>
+                  <li v-if="project.video"><a :href="project.video" target="_blank">Video Demo</a></li>
+                </ul>
+              </div>
             </div>
 
+            <div class="screenshot-box">
+              <h4>🔎&nbsp;&nbsp;&nbsp;&nbsp;Preview&nbsp;&nbsp;&nbsp;&nbsp;🔎</h4>
+              <img :src="project.screenshots[project.position]"  alt="Screenshot" class="screenshot">
+              <button id="toggle-button" @click="screenshotBackwards(project)">&larr;</button>
+              <button id="toggle-button" @click="screenshotForwards(project)">&rarr;</button>
             </div>
-              <div class="screenshot-box">
-                <h4>🔎&nbsp;&nbsp;&nbsp;&nbsp;Preview&nbsp;&nbsp;&nbsp;&nbsp;🔎</h4>
-                <img :src="project.screenshots[project.position]"  alt="Screenshot" class="screenshot">
-                <button id="toggle-button" @click="screenshotBackwards(project)">&larr;</button>
-                <button id="toggle-button" @click="screenshotForwards(project)">&rarr;</button>
-              </div>
           </div>
         </div>
     </section>
 
     <section id="contact">
-    <h2>Contact</h2>
-        <div class="contact">
+      <h2>Contact</h2>
+        <div class="contact-container">
             <ul> 
               <li>
-                <a :href="linkedIn" target="_blank">
-                  <img :src="linkedInLogo"  alt="LinkedIn Logo" class="contact-logo">
-                </a>
+                <a :href="linkedIn" target="_blank"><img :src="linkedInLogo"  alt="LinkedIn Logo" class="contact-logo"></a>
                 Find me on&nbsp<a :href="linkedIn" target="_blank">LinkedIn</a>
               </li>
               <br>
               <li>
-                <a :href="gitHub" target="_blank">
-                  <img :src="githubLogo"  alt="GitHub Logo" class="contact-logo">
-                </a>
+                <a :href="gitHub" target="_blank"><img :src="githubLogo"  alt="GitHub Logo" class="contact-logo"></a>
                 See more exciting projects on&nbsp<a :href="gitHub" target="_blank">GitHub</a>
               </li>
             </ul>
@@ -393,10 +377,8 @@ app.component('home', {
         <h2>Fact of the day</h2>
         <p>{{ factText }}</p>
         <button @click="closeOverlay" class="close-button">Close</button>
-
-        <p id="api-reference">Daily facts provided by&nbsp<a :href="api" target="_blank">Joseph Paul</a>
-        </p>
+        <p id="api-reference">Daily facts provided by&nbsp<a :href="api" target="_blank">Joseph Paul</a></p>
       </div>
     </div>
-    </div>`,
+    `,
 });
