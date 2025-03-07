@@ -1,0 +1,39 @@
+/* mobile */
+@media (min-width: 320) {
+    .about-container,
+    .skills-container,
+    .project-container,
+    .contact-container {
+    width: 80%; /* Prevents excessive stretching */
+    margin: 0 auto; /* Centers the content */
+    flex-direction: row; /* Side-by-side layout */
+    justify-content: space-between; /* Space between elements */
+  }
+}
+
+
+/* tablet */
+@media (min-width: 767) {
+    .about-container,
+    .skills-container,
+    .project-container,
+    .contact-container {
+    width: 80%; /* Prevents excessive stretching */
+    margin: 0 auto; /* Centers the content */
+    flex-direction: row; /* Side-by-side layout */
+    justify-content: space-between; /* Space between elements */
+  }
+}
+
+/* Desktop: Larger screens (≥ 1024px) */
+@media (min-width: 1024px) {
+  .about-container,
+  .skills-container,
+  .project-container,
+  .contact-container {
+    max-width: 1200px; /* Prevents excessive stretching */
+    margin: 0 auto; /* Centers the content */
+    justify-content: center;
+    align-content: center;
+  }
+}

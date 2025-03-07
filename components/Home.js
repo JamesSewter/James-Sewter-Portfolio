@@ -249,13 +249,28 @@ app.component('home', {
         this.flippedTools[tool.name] = !this.flippedTools[tool.name];
       }
     },
+    toggleMenu() {
+      document.querySelector(".nav-links").classList.toggle("active");
+    },
+    closeMenuOutside(event) {
+      const menu = document.querySelector(".nav-links");
+      const button = document.querySelector(".menu-toggle");
+
+      if (menu.classList.contains("active") && !menu.contains(event.target) && !button.contains(event.target)) {
+        menu.classList.remove("active");
+      }
+    }
   },
   computed: {},
   mounted() {
     document.addEventListener('click', this.closeDropdownOutside);
+    document.querySelector(".menu-toggle").addEventListener("click", this.toggleMenu);
+    document.addEventListener("click", this.closeMenuOutside);
   },
   beforeUnmount() {
     document.removeEventListener('click', this.closeDropdownOutside);
+    document.removeEventListener(".menu-toggle").addEventListener("click", this.toggleMenu);
+    document.removeEventListener("click", this.closeMenuOutside);
   },
   template:
     /*html*/
@@ -263,6 +278,7 @@ app.component('home', {
     <section id="nav">
       <nav class="nav-bar">
         <h1 id="name">{{ name }}</h1>
+        <button class="menu-toggle" aria-label="Toggle menu">☰</button>
         <ul class="nav-links">
           <li class="link"><a href="#about">About</a></li>
           <li class="link"><a href="#skills">Skills</a></li>

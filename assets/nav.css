@@ -1,81 +1,89 @@
+/* General Nav Styles */
 .nav-bar {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-  
-    padding: 1rem;
-  
-    width: 100%;
-    min-width: 300px;
-    min-height: 150px;
-  
-  
-    border-radius: 10px;
-    background: linear-gradient(-90deg, #83c0cf, #1544a8);
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.57);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  width: 100%;
+  background: linear-gradient(-90deg, #83c0cf, #1544a8);
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.57);
+  border-radius: 10px;
+  position: relative;
+}
+
+#name {
+  margin-top: 0.5rem;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* Hamburger Menu Button (Mobile Only) */
+.menu-toggle {
+  font-size: 30px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  margin: 10px 0;
+  display: block; /* Only visible on mobile */
+}
+
+/* Nav Links (Hidden by Default on Mobile) */
+.nav-links {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.nav-links li {
+  padding: 10px;
+}
+
+.link {
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+/* Show menu when active */
+.nav-links.active {
+  display: flex;
+}
+
+/* Tablet and Desktop View */
+@media (min-width: 768px) {
+  .menu-toggle {
+    display: none; /* Hide hamburger button */
   }
-  
-  #name {
-    margin-top: 0.5rem;
-    margin-bottom: 0rem;
+
+  .nav-bar {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem 2rem;
   }
-  
+
   .nav-links {
-    display: flex;
-    justify-content: center;
+    display: flex !important; /* Always show menu */
+    flex-direction: row;
     gap: 2rem;
-    padding: 1rem;
-    margin: 0;
+    background: none;
   }
-  
-  
+
+  .link {
+    font-size: 22px;
+  }
+}
+
+
+/* Desktop */
+@media (min-width: 1024px) {
   .link {
     font-size: 25px;
   }
-  
-  #dropdown {
-    position: relative;
-  }
-  
-  .dropdown-content {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 1000;
-    min-width: 160px;
-    padding: 20px 0;
-    margin: 10px;
-    background-color: white;
-    border-top: 5px solid#83c0cf;
-    border-left: 5px solid#83c0cf;
-    border-radius: 10px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  }
-  
-  .project-link {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    padding: 1rem;
-    font-size: 20px;
-    white-space: nowrap;
-  }
-  
-  .emoji {
-    display: inline-block;
-    padding: 0.75rem;
-  }
-  
-  .close-button {
-    margin-top: 10px;
-    padding: 5px 10px;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-  }
-  
-  .close-button:hover {
-    background-color: #0056b3;
-  }
+}
