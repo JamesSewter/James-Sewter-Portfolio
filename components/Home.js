@@ -44,23 +44,20 @@ app.component('home', {
         ],
         'front-end': [
           {
-            name: 'React Native',
-            logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg',
-          },
-          {
-            name: 'React',
-            logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg',
+            name: 'HTML',
+            logo: 'https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg',
           },
           {
             name: 'CSS',
             logo: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg',
           },
           {
-            name: 'HTML',
-            logo: 'https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg',
+            name: 'React.js',
+            logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg',
           },
           {
-            name: 'Wave',
+            name: 'React Native',
+            logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg',
           },
           {
             name: 'Vue.js',
@@ -99,6 +96,9 @@ app.component('home', {
           {
             name: 'Jest',
             logo: null,
+          },
+          {
+            name: 'Wave',
           },
         ],
       },
@@ -304,7 +304,8 @@ app.component('home', {
               <li v-for="(value, area) in skills" :key="area" class="area-row">
                 <strong id="area-title">{{ capitaliseFirstLetter(area) }}:</strong> 
 
-                  <div v-for="(tool) in value" class="tool-container" @mouseenter="flipToolHover(tool, true)" 
+                  <div v-for="(tool) in value" class="tool-container" 
+                  @mouseenter="flipToolHover(tool, true)" 
                   @mouseleave="flipToolHover(tool, false)" 
                   @click="flipTool(tool)"> 
 
@@ -315,7 +316,7 @@ app.component('home', {
                     </div> 
 
                   </div> 
-
+    
               </li>
             </ul>
 
@@ -326,7 +327,7 @@ app.component('home', {
 
     <section id="projects">
         <h2> Projects </h2>
-        <div class="project" v-for="(project) in projects"  :key="project" :id="project.title">
+        <div class="project-container" v-for="(project) in projects"  :key="project" :id="project.title">
         <div class="project-header">
           <h3 id="project-emoji">{{project.emoji}}</h3>
           <h3 id="project-title">{{ project.title }}</h3>
