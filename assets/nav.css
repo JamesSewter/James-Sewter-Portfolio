@@ -1,4 +1,3 @@
-/* General Nav Styles */
 .nav-bar {
   display: flex;
   flex-direction: column;
@@ -11,13 +10,18 @@
   position: relative;
 }
 
-#name {
-  margin-top: 0.5rem;
-  font-size: 28px;
-  font-weight: bold;
+#nav-buttons {
+  display: flex;
+  justify-content: space-around; 
+  align-items: center;
+  width: 100%;
+  padding: 0.2rem;
 }
 
-/* Hamburger Menu Button (Mobile Only) */
+#linkedin-github-logos {
+  display: flex;
+}
+
 .menu-toggle {
   font-size: 30px;
   background: none;
@@ -25,65 +29,129 @@
   color: white;
   cursor: pointer;
   margin: 10px 0;
-  display: block; /* Only visible on mobile */
+  transition: smooth;
 }
 
-/* Nav Links (Hidden by Default on Mobile) */
+#name {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+/* (Hidden by Default on Mobile) */
 .nav-links {
   display: none;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  padding: 0;
-  list-style: none;
+  justify-content: space-between;
+  position: fixed;
+  margin: 1rem;
+  margin-top: 10rem;
+  padding: 1rem;
+  height: 100%;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
+  list-style: none;
   border-radius: 10px;
+  border-top: 5px solid#83c0cf;
+  background-color: #f9f9f9;
 }
 
-.nav-links li {
-  padding: 10px;
+.nav-links.active {
+  display: flex;
+
 }
 
 .link {
-  font-size: 20px;
-  color: white;
-  text-decoration: none;
+  align-content: center;
+  justify-content: center;
+  padding: 3rem;
+  margin-top: 2rem;
+  width: 20rem;
+  background-color: #f9f9f9;
+  border-left: 5px solid#0056b3;
+  border-top: 5px solid#0056b3;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
 }
 
-/* Show menu when active */
-.nav-links.active {
+#dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  min-width: 160px;
+  padding: 20px 0;
+  margin: 10px;
+  background-color: white;
+  border-top: 5px solid#83c0cf;
+  border-left: 5px solid#83c0cf;
+  border-radius: 10px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.project-link {
   display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 1rem;
+  font-size: 20px;
+  white-space: nowrap;
+}
+
+.emoji {
+  display: inline-block;
+  padding: 0.75rem;
+}
+
+.close-button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  background-color: #0056b3;
 }
 
 /* Tablet and Desktop View */
 @media (min-width: 768px) {
   .menu-toggle {
-    display: none; /* Hide hamburger button */
+    display: none; 
   }
 
   .nav-bar {
-    flex-direction: row;
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
     padding: 1rem 2rem;
   }
 
+  #name {
+    margin-top: 0.5rem;
+    margin-bottom: 0rem;
+  }
+
   .nav-links {
-    display: flex !important; /* Always show menu */
+    display: flex !important; 
     flex-direction: row;
-    gap: 2rem;
+    justify-content: center;
+    gap: 1rem;
     background: none;
   }
 
   .link {
-    font-size: 22px;
-  }
-}
-
-
-/* Desktop */
-@media (min-width: 1024px) {
-  .link {
     font-size: 25px;
   }
 }
+
+

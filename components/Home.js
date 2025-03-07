@@ -259,6 +259,9 @@ app.component('home', {
       if (menu.classList.contains("active") && !menu.contains(event.target) && !button.contains(event.target)) {
         menu.classList.remove("active");
       }
+    },
+    closeMenu() {
+      document.querySelector(".nav-links").classList.remove("active");
     }
   },
   computed: {},
@@ -277,21 +280,31 @@ app.component('home', {
     `
     <section id="nav">
       <nav class="nav-bar">
+        <div id="nav-buttons">
+          <div id="linkedin-github-logos">
+            <a :href="linkedIn" target="_blank"><img :src="linkedInLogo"  alt="LinkedIn Logo" class="contact-logo"></a>
+            <a :href="gitHub" target="_blank"><img :src="githubLogo"  alt="GitHub Logo" class="contact-logo"></a>
+          </div>
+          <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+        </div>
+
         <h1 id="name">{{ name }}</h1>
-        <button class="menu-toggle" aria-label="Toggle menu">☰</button>
-        <ul class="nav-links">
-          <li class="link"><a href="#about">About</a></li>
-          <li class="link"><a href="#skills">Skills</a></li>
-          <li id="dropdown" class="link"><a href="#" @click.prevent="toggleDropdown" ref="dropdownToggle">Projects ▾</a>
-            <ul class="dropdown-content" v-if="isDropdownOpen" ref="dropdown">
-              <li class="project-link" v-for="(project) in projects" :key="project.title">
+
+        <div class="nav-links">
+          <ul>
+            <li class="link" @click="closeMenu"><a href="#about">About</a></li>
+            <li class="link" @click="closeMenu"><a href="#skills">Skills</a></li>
+            <li id="dropdown" class="link"><a href="#" @click.prevent="toggleDropdown" ref="dropdownToggle">Projects ▾</a>
+              <ul class="dropdown-content" v-if="isDropdownOpen" ref="dropdown">
+                <li class="project-link" v-for="(project) in projects" :key="project.title" @click="closeMenu">
               <span class="emoji">{{ project.emoji }}</span>
               <a :href="'#' + project.title">{{project.title}}</a></li>
               <button @click="closeDropdown" class="close-button">Close</button>
-            </ul>
-          </li>
-          <li class="link"><a href="#contact">Contact</a></li>
-        </ul>
+              </ul>
+            </li>
+            <li class="link" @click="closeMenu"><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
       </nav>
     <section>
 
