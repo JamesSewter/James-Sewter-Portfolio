@@ -292,9 +292,9 @@ app.component('home', {
 
         <div class="nav-links">
           <ul>
-            <li class="link" @click="closeMenu"><a href="#about">About</a></li>
-            <li class="link" @click="closeMenu"><a href="#skills">Skills</a></li>
-            <li id="dropdown" class="link"><a href="#" @click.prevent="toggleDropdown" ref="dropdownToggle">Projects ▾</a>
+            <li class="link" @click="closeMenu" href="#about">About</li>
+            <li class="link" @click="closeMenu" href="#skills">Skills</li>
+            <li id="dropdown" class="link" href="#" @click.prevent="toggleDropdown" ref="dropdownToggle">Projects ▾
               <ul class="dropdown-content" v-if="isDropdownOpen" ref="dropdown">
                 <li class="project-link" v-for="(project) in projects" :key="project.title" @click="closeMenu">
               <span class="emoji">{{ project.emoji }}</span>
@@ -302,7 +302,7 @@ app.component('home', {
               <button @click="closeDropdown" class="close-button">Close</button>
               </ul>
             </li>
-            <li class="link" @click="closeMenu"><a href="#contact">Contact</a></li>
+            <li class="link" @click="closeMenu" href="#contact">Contact</li>
           </ul>
         </div>
       </nav>
