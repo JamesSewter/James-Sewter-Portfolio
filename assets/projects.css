@@ -1,0 +1,140 @@
+.project-container {
+    flex-direction: column;
+    align-items: center;
+  
+    width: 100%;
+    padding: 2rem;
+    margin: 5rem;
+    margin-bottom: 3rem;
+  
+    border: 1px solid #ccc;
+    border-top: 20px solid #0056b3;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .project-header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  
+  #project-emoji {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  
+  #project-title {
+    flex-grow: 1;
+    text-align: center;
+    text-decoration: underline;
+  }
+  
+  .project p {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
+  .project-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 20px;
+    width: 100%;
+  }
+  
+  .project-summary-box {
+    width: 40%;
+    padding: 2rem;
+    margin: 2%;
+    border-left: 5px solid #007bff;
+    border-radius: 10px;
+    background: #f9f9f9;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  #project-summary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+    text-align: center;
+  }
+  
+  .bullet-point {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8%;
+    font-size: 20px;
+    line-height: 1.75;
+  }
+  
+  .bullet-point::before {
+    margin-right: 10px;
+    content: '✔';
+    font-size: 20px;
+    color: #007bff;
+    font-weight: bold;
+  }
+  
+  .screenshot-box {
+    width: 50%;
+    max-width: 400px;
+    padding: 2rem;
+    margin: 2%;
+    border-radius: 10px;
+    background: #f9f9f9;
+    border-left: 5px solid#83c0cf;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .screenshot {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+  #toggle-button {
+    padding: 8px 12px;
+    margin: 1rem;
+    border: 2px;
+    border-radius: 10px;
+    background-color: #a1bad4;
+    color: white;
+    cursor: pointer;
+    font-size: 1.5rem;
+  }
+  
+  #toggle-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .links {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+  }
+  
+  .links ul {
+    display: flex;
+    padding-left: 0;
+    gap: 20px;
+  }
+  
+  .links li {
+    margin: 0;
+  }
+  
+  .links a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+  }
+  
+  .links a:hover {
+    text-decoration: underline;
+  }
