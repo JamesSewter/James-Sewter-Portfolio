@@ -351,27 +351,21 @@ app.component('home', {
       <h2>Skills</h2>
         <div class="skills-container">
           <ul class="skill-list">
-
-            <li v-for="(value, area) in skills" :key="area" class="area">
-
-            <strong id="area-title">{{  capitaliseFirstLetter(area) }}:</strong> 
-
-            <div class="area-section">
-              <div v-for="(tool) in value"  class="area-tool" 
-                @mouseenter="flipToolHover(tool, true)" 
-                @mouseleave="flipToolHover(tool, false)" 
-                @click="flipTool(tool)"> 
-                <p v-if="!flippedTools[tool.name]" class="tool-title">{{tool.name}}</p>
-                <div v-if="flippedTools[tool.name] && tool.logo" class="logo-item"> 
-                  <img :src="tool.logo">
+            <li v-for="(value, area) in skills"   :key="area" class="area">
+              <strong id="area-title">{{  capitaliseFirstLetter(area) }}:</strong> 
+              <div class="area-section">
+                <div v-for="(tool) in value"    class="area-tool" 
+                  @mouseenter="flipToolHover(tool, true)" 
+                  @mouseleave="flipToolHover(tool, false)" 
+                    @click="flipTool(tool)"> 
+                  <p v-if="!flippedTools[tool.name]" class="tool-title">{{tool.name}}</p>
+                    <div v-if="flippedTools[tool.name] && tool.logo" class="logo-item"> 
+                    <img :src="tool.logo">
+                  </div> 
                 </div> 
-            </div> 
-          </div>
-
-        </li>
-
-      </ul>
-
+              </div>
+            </li>
+          </ul>
         </div>
     </section>
 
