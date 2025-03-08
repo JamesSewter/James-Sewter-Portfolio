@@ -38,5 +38,16 @@
   }
 
   @media (min-width: 768px) {
-
+    .about-container {
+      display: flex; 
+      flex-direction: row; 
+      align-items: center;
+      justify-content: center; 
+    }
+  
+    #profile-picture {
+      width: 40%; 
+      max-height: 400px;
+      min-width: 200px;
+    }
   }

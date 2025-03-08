@@ -1,6 +1,5 @@
-/* tablet */
+
 @media (min-width: 768) {
-    .about-container,
     .skills-container,
     .project-container,
     .contact-container {
