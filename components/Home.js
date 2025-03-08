@@ -162,7 +162,7 @@ app.component('home', {
       },
       linkedIn: 'https://www.linkedin.com/in/james-sewter/',
       gitHub: 'https://github.com/JamesSewter',
-      api: "https://uselessfacts.jsph.pl/",
+      api: 'https://uselessfacts.jsph.pl/',
       linkedInLogo: '../assets/images/linkedin-logo.png',
       githubLogo: '../assets/images/github-logo.png',
       flippedTools: {},
@@ -250,30 +250,47 @@ app.component('home', {
       }
     },
     toggleMenu() {
-      document.querySelector(".nav-links").classList.toggle("active");
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+
+      if (navLinks.classList.contains('active')) {
+        document.body.classList.add('no-scroll');
+      } else {
+        document.body.classList.remove('no-scroll');
+      }
     },
     closeMenuOutside(event) {
-      const menu = document.querySelector(".nav-links");
-      const button = document.querySelector(".menu-toggle");
+      const menu = document.querySelector('.nav-links');
+      const button = document.querySelector('.menu-toggle');
 
-      if (menu.classList.contains("active") && !menu.contains(event.target) && !button.contains(event.target)) {
-        menu.classList.remove("active");
+      if (
+        menu.classList.contains('active') &&
+        !menu.contains(event.target) &&
+        !button.contains(event.target)
+      ) {
+        menu.classList.remove('active');
+        document.body.classList.remove('no-scroll');
       }
     },
     closeMenu() {
-      document.querySelector(".nav-links").classList.remove("active");
-    }
+      document.querySelector('.nav-links').classList.remove('active');
+      document.body.classList.remove('no-scroll');
+    },
   },
   computed: {},
   mounted() {
     document.addEventListener('click', this.closeDropdownOutside);
-    document.querySelector(".menu-toggle").addEventListener("click", this.toggleMenu);
-    document.addEventListener("click", this.closeMenuOutside);
+    document
+      .querySelector('.menu-toggle')
+      .addEventListener('click', this.toggleMenu);
+    document.addEventListener('click', this.closeMenuOutside);
   },
   beforeUnmount() {
     document.removeEventListener('click', this.closeDropdownOutside);
-    document.removeEventListener(".menu-toggle").addEventListener("click", this.toggleMenu);
-    document.removeEventListener("click", this.closeMenuOutside);
+    document
+      .removeEventListener('.menu-toggle')
+      .addEventListener('click', this.toggleMenu);
+    document.removeEventListener('click', this.closeMenuOutside);
   },
   template:
     /*html*/
@@ -287,26 +304,41 @@ app.component('home', {
           </div>
           <button class="menu-toggle" aria-label="Toggle menu">☰</button>
         </div>
-
         <h1 id="name">{{ name }}</h1>
 
         <div class="nav-links">
-          <ul>
-            <li class="link" @click="closeMenu" href="#about">About</li>
-            <li class="link" @click="closeMenu" href="#skills">Skills</li>
-            <li id="dropdown" class="link" href="#" @click.prevent="toggleDropdown" ref="dropdownToggle">Projects ▾
-              <ul class="dropdown-content" v-if="isDropdownOpen" ref="dropdown">
-                <li class="project-link" v-for="(project) in projects" :key="project.title" @click="closeMenu">
-              <span class="emoji">{{ project.emoji }}</span>
-              <a :href="'#' + project.title">{{project.title}}</a></li>
-              <button @click="closeDropdown" class="close-button">Close</button>
-              </ul>
-            </li>
-            <li class="link" @click="closeMenu" href="#contact">Contact</li>
-          </ul>
-        </div>
+        <ul>
+      
+          <li class="link">
+            <a href="#about" @click="closeMenu">About</a>
+          </li>
+          <li class="link">
+            <a href="#skills" @click="closeMenu">Skills</a>
+          </li>
+
+          <li id="dropdown">
+            <button @click.prevent="toggleDropdown" ref="dropdownToggle" class="link" id="dropdown-button">
+            Projects ▾
+            </button>
+
+            <div class="dropdown-content" v-if="isDropdownOpen" ref="dropdown">
+              <div v-for="(project) in projects" :key="project.title"> 
+                <a class="project-link" :href="'#' + project.title"   @click="closeMenu">
+                  {{ project.emoji }}&nbsp;&nbsp;{{ project.title }}
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <li class="link">
+            <a href="#contact" @click="closeMenu">Contact</a>
+          </li>
+        </ul>
+      </div>
+
+
       </nav>
-    <section>
+    </section>
 
     <section id="about">
       <h2>About</h2>
@@ -324,7 +356,6 @@ app.component('home', {
 
     <section id="skills">
       <h2>Skills</h2>
-
         <div class="skills-container">
             <ul class="skill-list">
               <li v-for="(value, area) in skills" :key="area" class="area-row">
