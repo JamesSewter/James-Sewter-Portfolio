@@ -1,12 +1,12 @@
-
 @media (min-width: 768) {
-    .skills-container,
-    .project-container,
-    .contact-container {
-    width: 80%; /* Prevents excessive stretching */
-    margin: 0 auto; /* Centers the content */
-    flex-direction: row; /* Side-by-side layout */
-    justify-content: space-between; /* Space between elements */
+  .about-container,
+  .skills-container,
+  .project-container,
+  .contact-container {
+    width: 80%; 
+    margin: 0 auto; 
+    flex-direction: row; 
+    justify-content: space-between; 
   }
 }
 
@@ -16,8 +16,9 @@
   .skills-container,
   .project-container,
   .contact-container {
-    max-width: 1200px; /* Prevents excessive stretching */
-    margin: 0 auto; /* Centers the content */
+    width: 80%;
+    max-width: 1300px; 
+    margin: 0 auto; 
     justify-content: center;
     align-content: center;
   }
