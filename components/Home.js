@@ -339,7 +339,7 @@ app.component('home', {
           <div id="intro-points">
             <p class="intro-point">&#x1F393 &nbsp; {{ introOne }} </p>
             <p class="intro-point">&#x2699 &nbsp; {{ introTwo }} &nbsp; </p>
-            <p class="intro-point"> &#127947 &nbsp; {{ introThree }}  </p>
+            <p class="intro-point"> &#127947 &nbsp; 'Developing my programming skills via personal projects - find out more <a href="#projects">below!</a>'  </p>
             <p class="intro-point"> 👨🏻‍💻 &nbsp; {{ introFour }} </p>
             <p class="intro-point"> 🥾 &nbsp; {{ introFive }} </p>
           </div>
