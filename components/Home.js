@@ -295,6 +295,8 @@ app.component('home', {
   template:
     /*html*/
     `
+    <div class="expand-message">Please expand the screen...</div>
+
     <section id="nav">
       <nav class="nav-bar">
         <div id="nav-buttons">
