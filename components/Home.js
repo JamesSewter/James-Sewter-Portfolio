@@ -305,38 +305,34 @@ app.component('home', {
           <button class="menu-toggle" aria-label="Toggle menu">☰</button>
         </div>
         <h1 id="name">{{ name }}</h1>
-
         <div class="nav-links">
-        <ul>
-      
-          <li class="link">
-            <a href="#about" @click="closeMenu">About</a>
-          </li>
-          <li class="link">
-            <a href="#skills" @click="closeMenu">Skills</a>
-          </li>
+          <ul>
+            <li class="link">
+              <a href="#about" @click="closeMenu">About</a>
+            </li>
+            <li class="link">
+              <a href="#skills" @click="closeMenu">Skills</a>
+            </li>
 
-          <li id="dropdown">
-            <button @click.prevent="toggleDropdown" ref="dropdownToggle" class="link" id="dropdown-button">
-            Projects ▾
-            </button>
+            <li id="dropdown">
+              <button @click.prevent="toggleDropdown" ref="dropdownToggle" class="link"   id="dropdown-button">
+                Projects ▾
+              </button>
 
-            <div class="dropdown-content" v-if="isDropdownOpen" ref="dropdown">
-              <div v-for="(project) in projects" :key="project.title"> 
-                <a class="project-link" :href="'#' + project.title"   @click="closeMenu">
-                  {{ project.emoji }}&nbsp;&nbsp;{{ project.title }}
-                </a>
+              <div class="dropdown-content" v-if="isDropdownOpen" ref="dropdown">
+                <div v-for="(project) in projects" :key="project.title"> 
+                  <a class="project-link" :href="'#' + project.title"   @click="closeMenu">
+                    {{ project.emoji }}&nbsp;&nbsp;{{ project.title }}
+                  </a>
+                </div>
               </div>
-            </div>
-          </li>
+            </li>
 
-          <li class="link">
-            <a href="#contact" @click="closeMenu">Contact</a>
-          </li>
-        </ul>
-      </div>
-
-
+            <li class="link">
+              <a href="#contact" @click="closeMenu">Contact</a>
+            </li>
+          </ul>
+        </div>
       </nav>
     </section>
 
