@@ -162,13 +162,15 @@ app.component('home', {
       },
       linkedIn: 'https://www.linkedin.com/in/james-sewter/',
       gitHub: 'https://github.com/JamesSewter',
-      api: 'https://uselessfacts.jsph.pl/',
+      api: 'https://publicapi.dev/official-joke-api',
       linkedInLogo: '../assets/images/linkedin-logo.png',
       githubLogo: '../assets/images/github-logo.png',
       flippedTools: {},
       isDropdownOpen: false,
       isOverlayVisible: false,
-      factText: 'Loading fact...',
+      jokeSetup: 'Loading Joke...',
+      jokePunchline: 'Loading Punchline',
+      punchlineOpen: false,
     };
   },
   methods: {
@@ -210,20 +212,38 @@ app.component('home', {
         this.isDropdownOpen = false;
       }
     },
-    async fetchFact() {
+    async fetchJoke() {
       try {
         const response = await fetch(
-          'https://uselessfacts.jsph.pl/api/v2/facts/today'
+          'https://official-joke-api.appspot.com/random_joke'
         );
         const data = await response.json();
-        this.factText = data.text;
+        this.jokeSetup = data.setup;
+        this.jokePunchline = data.punchline;
         this.isOverlayVisible = true;
         document.addEventListener('click', this.closeOverlayOutside);
       } catch (error) {
-        this.factText =
+        this.jokeSetup =
           'Oh no fact fetching failed - please check your internet connection.';
         this.isOverlayVisible = true;
         document.addEventListener('click', this.closeOverlayOutside);
+      }
+    },
+    revealPunchline() {
+      this.punchlineOpen = true;
+    },
+    closeJoke() {
+      this.punchlineOpen = false
+      this.isOverlayVisible = false;
+      document.removeEventListener('click', this.closeOverlayOutside);
+    },
+    closeJokeOutside(event) {
+      if (
+        this.isOverlayVisible &&
+        this.$refs.factContent &&
+        !this.$refs.factContent.contains(event.target)
+      ) {
+        this.closeOverlay();
       }
     },
     closeOverlay() {
@@ -284,6 +304,7 @@ app.component('home', {
       .querySelector('.menu-toggle')
       .addEventListener('click', this.toggleMenu);
     document.addEventListener('click', this.closeMenuOutside);
+    document.addEventListener('click', this.closeJokeOutside);
   },
   beforeUnmount() {
     document.removeEventListener('click', this.closeDropdownOutside);
@@ -291,6 +312,7 @@ app.component('home', {
       .removeEventListener('.menu-toggle')
       .addEventListener('click', this.toggleMenu);
     document.removeEventListener('click', this.closeMenuOutside);
+    document.removeEventListener('click', this.closeJokeOutside);
   },
   template:
     /*html*/
@@ -426,16 +448,21 @@ app.component('home', {
         </div>
     </section>
 
-    <div class="button-to-fact">
-      <button class="button" @click="fetchFact">Fact of the day</button>
+    <div class="button-to-joke">
+      <button class="button" @click="fetchJoke">Joke</button>
     </div>
 
-    <div v-if="isOverlayVisible" class="fact-overlay" >
-      <div class="fact-content" ref="factContent">
-        <h2>Fact of the day</h2>
-        <p>{{ factText }}</p>
-        <button @click="closeOverlay" class="close-button">Close</button>
-        <p id="api-reference">Daily facts provided by&nbsp<a :href="api" target="_blank">Joseph Paul</a></p>
+    <div v-if="isOverlayVisible" class="joke-overlay" >
+      <div class="joke-content" ref="jokeContent">
+        <h2>Random Joke</h2>
+        <p>{{ jokeSetup }}</p>
+
+        <button id="joke-button" @click="revealPunchline">Reveal punchline</button>
+
+        <p v-if="punchlineOpen">{{jokePunchline}}</p>
+        <br>
+        <button @click="closeJoke" class="close-button">Close</button>
+        <p id="api-reference">Jokes provided by&nbsp<a :href="api" target="_blank">Official Joke</a></p>
       </div>
     </div>
     `,

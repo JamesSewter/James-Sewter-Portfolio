@@ -1,4 +1,4 @@
-.button-to-fact {
+.button-to-joke {
     font-size: 24px;
     white-space: nowrap;
     transition: transform 0.5s ease-in-out;
@@ -20,7 +20,7 @@
     cursor: pointer;
   }
   
-  .fact-overlay {
+  .joke-overlay {
     position: fixed;
     z-index: 1000;
     top: 0;
@@ -33,19 +33,42 @@
     background-color: rgba(0, 0, 0, 0.7);
   }
   
-  .fact-content {
+  .joke-content {
     width: 60%;
     padding: 20px;
-    border-left: 5px solid #007bff;
+    border: 5px solid #007bff;
     border-radius: 8px;
     background-color: white;
     text-align: center;
+  }
+
+  #joke-button {
+    justify-content: center;
+    align-content: center;
+    padding: 1rem;
+    margin: 2rem;
+    width: 100%;
+    max-width: 200px;
+    height: 100%;
+    background: #f9f9f9;
+    border-radius: 10px;
+    border-top: 5px solid#0056b3;
+    border-left: 5px solid#0056b3;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+  }
+
+  #joke-button:hover {
+    background-color: #83c0cf;
   }
   
   #api-reference {
     font-size: 15px;
   }
   .close-button {
+    width: 80%;
+    max-width: 100px;
+    min-height: 40px;
     margin-top: 10px;
     padding: 5px 10px;
     border-radius: 5px;
