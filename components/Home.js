@@ -64,7 +64,7 @@ app.component('home', {
             logo: 'https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg',
           },
         ],
-        misc: [
+        miscellaneous: [
           {
             name: 'Socket.io',
             logo: 'https://itsolution24x7.com/blog/wp-content/uploads/2020/06/socketio.png',
@@ -350,22 +350,34 @@ app.component('home', {
     <section id="skills">
       <h2>Skills</h2>
         <div class="skills-container">
-            <ul class="skill-list">
-              <li v-for="(value, area) in skills" :key="area" class="area-row">
-                <strong id="area-title">{{ capitaliseFirstLetter(area) }}:</strong> 
-                  <div v-for="(tool) in value" class="tool-container" 
-                  @mouseenter="flipToolHover(tool, true)" 
-                  @mouseleave="flipToolHover(tool, false)" 
-                  @click="flipTool(tool)"> 
-                    <p v-if="!flippedTools[tool.name]" class="tool-title">{{tool.name}}</p>
-                    <div v-if="flippedTools[tool.name] && tool.logo" class="logo-item"> 
-                      <img :src="tool.logo">
-                    </div> 
-                  </div> 
-              </li>
-            </ul>
+          <ul class="skill-list">
+
+            <li v-for="(value, area) in skills" :key="area" class="area">
+
+            <strong id="area-title">{{  capitaliseFirstLetter(area) }}:</strong> 
+
+            <div class="area-section">
+              <div v-for="(tool) in value"  class="area-tool" 
+                @mouseenter="flipToolHover(tool, true)" 
+                @mouseleave="flipToolHover(tool, false)" 
+                @click="flipTool(tool)"> 
+                <p v-if="!flippedTools[tool.name]" class="tool-title">{{tool.name}}</p>
+                <div v-if="flippedTools[tool.name] && tool.logo" class="logo-item"> 
+                  <img :src="tool.logo">
+                </div> 
+            </div> 
+          </div>
+
+        </li>
+
+      </ul>
+
         </div>
     </section>
+
+    
+
+
 
 
     <section id="projects">

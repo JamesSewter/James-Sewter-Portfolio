@@ -1,30 +1,22 @@
-<div class="nav-links">
-  <ul>
+<ul class="skill-list">
 
-    <li class="link">
-      <a href="#about" @click="closeMenu">About</a>
-    </li>
+              <li v-for="(value, area) in skills" :key="area" class="area">
 
-    <li class="link">
-      <a href="#skills" @click="closeMenu">Skills</a>
-    </li>
+                <div class="area-section">
 
-    <li id="dropdown" class="link">
-      <button @click.prevent="toggleDropdown" ref="dropdownToggle" class="dropdown-button">
-        Projects ▾
-      </button>
-      <div class="dropdown-content" v-if="isDropdownOpen" ref="dropdown">
-        <div v-for="(project) in projects" :key="project.title"> 
-          <a class="project-link" :href="'#' + project.title">
-            {{ project.emoji }}&nbsp;&nbsp;{{ project.title }}
-          </a>
-        </div>
-      </div>
-    </li>
+                  <strong id="area-title">{{  capitaliseFirstLetter(area) }}:</strong> 
+                  
+                  <div v-for="(tool) in value" class="area-tool" 
+                    @mouseenter="flipToolHover(tool, true)" 
+                    @mouseleave="flipToolHover(tool, false)" 
+                    @click="flipTool(tool)"> 
+                    <p v-if="!flippedTools[tool.name]" class="tool-title">{{tool.name}}</p>
+                      <div v-if="flippedTools[tool.name] && tool.logo" class="logo-item"> 
+                        <img :src="tool.logo">
+                      </div> 
+                  </div> 
+                </div>
 
-    <li class="link">
-      <a href="#contact" @click="closeMenu">Contact</a>
-    </li>
+              </li>
 
-  </ul>
-</div>
+            </ul>
