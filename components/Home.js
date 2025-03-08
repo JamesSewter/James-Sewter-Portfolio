@@ -369,11 +369,6 @@ app.component('home', {
         </div>
     </section>
 
-    
-
-
-
-
     <section id="projects">
         <h2> Projects </h2>
         <div class="project-container" v-for="(project) in projects"  :key="project" :id="project.title">
@@ -382,8 +377,8 @@ app.component('home', {
           <h3 id="project-title">{{ project.title }}</h3>
           <h3 id="project-emoji">{{project.emoji}}</h3>
           </div>
-            <div class="project-content">
-              <div class="project-summary-box">
+            <div class="project-content-container">
+              <div class="project-summary-container">
                 <h4>📖&nbsp;&nbsp;&nbsp;&nbsp;Summary&nbsp;&nbsp;&nbsp;&nbsp;📖</h4>
                 <ul id="project-summary">
                   <li v-for="(bullet, index) in stringToBulletPoints(project.summary)" :key="index" class="bullet-point">
@@ -391,24 +386,26 @@ app.component('home', {
                   </li>
                 </ul>
               
-              <div class="links">
-                <ul>
-                  <li><a :href="project.github" target="_blank">GitHub Repo</a></li>
-                  <li><a :href="project.link" target="_blank">Hosted Project</a></li>
-                  <li v-if="project.video"><a :href="project.video" target="_blank">Video Demo</a></li>
-                </ul>
+                <div class="project-links">
+                  <ul>
+                    <li><a :href="project.github" target="_blank">GitHub Repo</a></li>
+                    <li><a :href="project.link" target="_blank">Hosted Project</a></li>
+                    <li v-if="project.video"><a :href="project.video" target="_blank">Video Demo</a></li>
+                  </ul>
+                </div>
+             </div>
+
+              <div class="screenshot-container">
+                <div class="preview-header">
+                  <button id="toggle-button" @click="screenshotBackwards(project)">&larr;</button>
+                  <h4>Preview</h4>
+                  <button id="toggle-button" @click="screenshotForwards(project)">&rarr;</button>
+                </div>
+                <img :src="project.screenshots[project.position]"  alt="Screenshot" class="screenshot">
               </div>
             </div>
-
-            <div class="screenshot-box">
-              <h4>🔎&nbsp;&nbsp;&nbsp;&nbsp;Preview&nbsp;&nbsp;&nbsp;&nbsp;🔎</h4>
-              <img :src="project.screenshots[project.position]"  alt="Screenshot" class="screenshot">
-              <button id="toggle-button" @click="screenshotBackwards(project)">&larr;</button>
-              <button id="toggle-button" @click="screenshotForwards(project)">&rarr;</button>
-            </div>
           </div>
-        </div>
-    </section>
+      </section>
 
     <section id="contact">
       <h2>Contact</h2>
