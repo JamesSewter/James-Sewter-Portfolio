@@ -313,12 +313,10 @@ app.component('home', {
             <li class="link">
               <a href="#skills" @click="closeMenu">Skills</a>
             </li>
-
             <li id="dropdown">
               <button @click.prevent="toggleDropdown" ref="dropdownToggle" class="link"   id="dropdown-button">
                 Projects ▾
               </button>
-
               <div class="dropdown-content" v-if="isDropdownOpen" ref="dropdown">
                 <div v-for="(project) in projects" :key="project.title"> 
                   <a class="project-link" :href="'#' + project.title"   @click="closeMenu">
@@ -327,7 +325,6 @@ app.component('home', {
                 </div>
               </div>
             </li>
-
             <li class="link">
               <a href="#contact" @click="closeMenu">Contact</a>
             </li>
